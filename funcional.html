@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Funcional</title>
+    <link rel="icon" href="Y.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #FF9800;
+            margin-bottom: 20px;
+        }
+
+        /* --- Cabeçalho / Navegação (mesmo da pesquisa.html) --- */
+        header {
+            width: 100%;
+            background-color: #111;
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #FF9800;
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+        .nav a:hover {
+            border-color: #FF9800;
+        }
+
+        .nav a.active {
+            background-color: #FF9800;
+            color: #000;
+        }
+
+        /* --- Conteúdo principal --- */
+        .content-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            margin: 25px 0 10px;
+            color: #00bcd4;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .module-card {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+        .module-card h3 {
+            margin: 0 0 6px;
+            font-size: 1rem;
+            color: #FF9800;
+        }
+
+        .module-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .module-card li::before {
+            content: "- ";
+        }
+
+        /* --- Atendentes --- */
+        .attendants-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .attendant-card {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.95rem;
+        }
+
+        .attendant-card h3 {
+            margin: 0 0 6px;
+            font-size: 1rem;
+            color: #FF9800;
+        }
+
+        .attendant-card p {
+            margin: 2px 0;
+        }
+
+        .afastado {
+            color: #ff5252;
+            font-weight: bold;
+        }
+
+        /* --- Rodapé (mesmo estilo da pesquisa) --- */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #fff;
+            border-top: 1px solid #333;
+            font-size: 1.1em;
+            --iframe-w: 180px;
+            --iframe-h: 48px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 12px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        #online-alarm-kur-iframe {
+            width: var(--iframe-w);
+            height: var(--iframe-h);
+            border: 0;
+            overflow: hidden;
+        }
+
+        .footer-spacer {
+            width: var(--iframe-w);
+            height: var(--iframe-h);
+        }
+
+        #countdown {
+            font-weight: bold;
+            color: #FF9800;
+        }
+
+        @media (max-width: 420px) {
+            .footer {
+                --iframe-w: 150px;
+                --iframe-h: 42px;
+            }
+            .footer-grid {
+                gap: 8px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho com tabs Pesquisa / Funcional -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">Localizar Chamados</div>
+            <nav class="nav">
+                <a href="index.html">Pesquisa</a>
+                <a href="funcional.html" class="active">Funcional</a>
+		<a href="nomes.html">Nomes</a>
+            </nav>
+        </div>
+    </header>
+
+    <h1>Mapa Funcional</h1>
+
+    <div class="content-wrapper">
+        <!-- Módulos x Pessoas -->
+        <div>
+            <div class="section-title">Módulos e responsáveis</div>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <h3>PDH (??)</h3>
+                    <ul>
+                        <li>Adroaldo</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>INV (Inventário)</h3>
+                    <ul>
+                        <li>Adroaldo</li>
+                        <li>Wladinei</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>iProc (Compras)</h3>
+                    <ul>
+                        <li>Adroaldo</li>
+                        <li>Livia Bernardes</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>PO (Ordens de Compra)</h3>
+                    <ul>
+                        <li>Adroaldo</li>
+                        <li>Livia Bernardes</li>
+                        <li>Loreni</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>RI (Recebimento de Itens)</h3>
+                    <ul>
+                        <li>Adroaldo</li>
+                        <li>Livia Bernardes</li>
+                        <li>Loreni</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>Desenvolvedor</h3>
+                    <ul>
+                        <li>Caue Gastard</li>
+                        <li>Renato Nass (TIGRE)</li>
+                        <li>Giovani Bachtold (Portobello)</li>
+                        <li>Helder Hedler (Procergs)</li>
+                        <li>Jean Silva</li>
+                        <li>João Barbosa (FIDC)</li>
+                        <li>Cleomar (GRPCOM)</li>
+                        <li>Fabio Silva (ELO)</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>AR (Contas a Receber)</h3>
+                    <ul>
+                        <li>Flávia Costa</li>
+                        <li>Hemerson Manarin</li>
+                        <li>Roberto Kohntopp</li>
+                        <li>Renato Nass (TIGRE)</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>Billing (Faturamento)</h3>
+                    <ul>
+                        <li>Flávia Costa</li>
+                        <li>Hemerson Manarin</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>GL (Contabilidade Geral)</h3>
+                    <ul>
+                        <li>Flávia Parra</li>
+                        <li>Katiucia</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>FA (Fixação de Ativos)</h3>
+                    <ul>
+                        <li>Flávia Parra</li>
+                        <li>Katiucia</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>AP (Contas a Pagar)</h3>
+                    <ul>
+                        <li>Katiucia</li>
+                        <li>Flávia Parra</li>
+                        <li>Loreni</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>EPM (Gestão de Projetos)</h3>
+                    <ul>
+                        <li>Flávia Parra</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>Mastersaf (Tributação)</h3>
+                    <ul>
+                        <li>Graziela</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>OM (Ordens de Manutenção)</h3>
+                    <ul>
+                        <li>Hemerson Manarin</li>
+                        <li>Roberto Kohntopp</li>
+                        <li>Renato Nass (TIGRE)</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>Impressão</h3>
+                    <ul>
+                        <li>Hemerson Manarin</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>Workflow (Fluxo de Trabalho)</h3>
+                    <ul>
+                        <li>Hemerson Manarin</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>RMA (Retorno de Mercadoria)</h3>
+                    <ul>
+                        <li>Hemerson Manarin</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>iExpense (Despesas de Viagem)</h3>
+                    <ul>
+                        <li>Katiucia</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>FEN (Finanças)</h3>
+                    <ul>
+                        <li>Livia Bernardes</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>PAC (Planejamento de Capacidade)</h3>
+                    <ul>
+                        <li>Wladinei</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>Manufatura</h3>
+                    <ul>
+                        <li>Wladinei</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>EAM (Gestão de Ativos Empresariais)</h3>
+                    <ul>
+                        <li>Wladinei</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h3>CE</h3>
+                    <ul>
+                        <li>Loreni</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Atendentes -->
+        <div>
+            <div class="section-title">Atendentes e atribuições</div>
+            <div class="attendants-list">
+
+                <div class="attendant-card">
+                    <h3>Atendente: Adroaldo Cesaro</h3>
+                    <p><strong>Módulos:</strong> INV, iProc, PO, RI</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Caue Gastardi</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor, Discoverer, Portal de serviços / IC (cliente TIGRE)</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos (prioritário para cliente TIGRE)</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Flávia Costa</h3>
+                    <p><strong>Módulos:</strong> AR, Billing</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Flávia Parra</h3>
+                    <p><strong>Módulos:</strong> GL, FA, AP, EPM</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Giovani Bachtold</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Está alocado para Portobello</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Graziela Reis Melo</h3>
+                    <p><strong>Módulos:</strong> Mastersaf</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Helder Hedler</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Está alocado para Procergs</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Hemerson Manarin</h3>
+                    <p><strong>Módulos:</strong> OM, AR, Billing, Impressão, Workflow, RMA</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Jean Rodrigo Evangelista Silva</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Joao Barbosa</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor, FIDC</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Katiucia Santos Martins</h3>
+                    <p><strong>Módulos:</strong> GL, FA, AP, iExpense</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Livia Bernardes</h3>
+                    <p><strong>Módulos:</strong> iProc, PO, RI, FEN</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Sob demanda</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Renato Nass Junior</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor + OM/AR, TIGRE</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos (prioritário para cliente TIGRE)</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Rodrigo Bonela <span class="afastado">AFASTADOOOOOOOOO</span></h3>
+                    <p><strong>Módulos:</strong> INV, iProc, PO, RI, Intercompany</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Vinicius Ferreira</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor Mastersaf</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Sob demanda</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Wladinei Santos</h3>
+                    <p><strong>Módulos:</strong> INV, PAC, Manufatura, EAM</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Douglas Giroti</h3>
+                    <p><strong>Módulos:</strong> OM, AR, Billing</p>
+                    <p><strong>Clientes para Atuação:</strong> Portobello</p>
+                    <p><strong>Horário de Atuação:</strong> Sob demanda</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Thiago Vaz</h3>
+                    <p><strong>Módulos:</strong> WMS</p>
+                    <p><strong>Clientes para Atuação:</strong> Portobello</p>
+                    <p><strong>Horário de Atuação:</strong> Sob demanda</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Claudio Santos</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor Mastersaf (Tax One e DFE)</p>
+                    <p><strong>Clientes para Atuação:</strong> Peccin</p>
+                    <p><strong>Horário de Atuação:</strong> Sob demanda</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Suzan Ramos</h3>
+                    <p><strong>Módulos:</strong> PO, AP</p>
+                    <p><strong>Clientes para Atuação:</strong> Makro</p>
+                    <p><strong>Horário de Atuação:</strong> Sob demanda</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Cleomar Roeper</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor</p>
+                    <p><strong>Clientes para Atuação:</strong> GRPCOM e projeto da Peccin</p>
+                    <p><strong>Horário de Atuação:</strong> Sob demanda</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Bruno Almeida</h3>
+                    <p><strong>Módulos:</strong> EPM</p>
+                    <p><strong>Clientes para Atuação:</strong> Especificamente projeto da Renner</p>
+                    <p><strong>Horário de Atuação:</strong> Sob demanda</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Anderson Roberto Pereira</h3>
+                    <p><strong>Módulos:</strong> FA</p>
+                    <p><strong>Clientes para Atuação:</strong> Especificamente projeto da Peccin</p>
+                    <p><strong>Horário de Atuação:</strong> Sob demanda</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Andreia Vieira</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedora</p>
+                    <p><strong>Clientes para Atuação:</strong> Especificamente projeto da Canguru</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Roberto Kohntopp</h3>
+                    <p><strong>Módulos:</strong> OM, AR</p>
+                    <p><strong>Clientes para Atuação:</strong> Portobello</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Fabio Silva</h3>
+                    <p><strong>Módulos:</strong> Desenvolvedor</p>
+                    <p><strong>Clientes para Atuação:</strong> Especificamente Elo</p>
+                    <p><strong>Horário de Atuação:</strong> Alocação full time</p>
+                </div>
+
+                <div class="attendant-card">
+                    <h3>Atendente: Loreni</h3>
+                    <p><strong>Módulos:</strong> AP, PO, RI, CE</p>
+                    <p><strong>Clientes para Atuação:</strong> Todos</p>
+                    <p><strong>Horário de Atuação:</strong> Comercial</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mesmo rodapé da outra página (opcional, mantive para ficar padrão) -->
+    <div class="footer">
+        <div class="footer-grid">
+            <iframe
+                id="online-alarm-kur-iframe"
+                src="https://embed-countdown.onlinealarmkur.com/pt/#2025-12-25T00:00:00@America%2FSao_Paulo"
+                scrolling="no">
+            </iframe>
+
+            <div>
+                Tempo restante <span id="countdown">Carregando...</span>
+            </div>
+
+            <div class="footer-spacer" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const today = now.getDate();
+            const tomorrow = today + 1;
+            
+            let targetTime;
+            let targetLabel;
+            
+            const target17h = new Date(now.getFullYear(), now.getMonth(), today, 17, 0, 0);
+            const target18h = new Date(now.getFullYear(), now.getMonth(), today, 18, 0, 0);
+            const nextDay17h = new Date(now.getFullYear(), now.getMonth(), tomorrow, 17, 0, 0);
+
+            if (now < target17h) {
+                targetTime = target17h;
+                targetLabel = "para as 17:00";
+            } else if (now < target18h) {
+                targetTime = target18h;
+                targetLabel = "para as 18:00 (Fim do Expediente)";
+            } else {
+                targetTime = nextDay17h;
+                targetLabel = "para 17:00 de amanhã";
+            }
+
+            const diff = targetTime - now;
+            const countdownElement = document.getElementById('countdown');
+            if (!countdownElement) return;
+
+            if (diff <= 0) {
+                countdownElement.innerHTML = `<span style="color: #FF9800;">Objetivo atingido! Próxima contagem: ${targetLabel.replace(/\*\*/g, '')}.</span>`;
+            } else {
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const timeString = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                countdownElement.innerHTML = `${targetLabel}: <span style="color: #FF9800;">${timeString}</span>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>

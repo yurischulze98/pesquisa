@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomes para Teams</title>
+    <link rel="icon" href="Y.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #FF9800;
+            margin-bottom: 15px;
+        }
+
+        /* --- Cabeçalho / Navegação --- */
+        header {
+            width: 100%;
+            background-color: #111;
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #FF9800;
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+        .nav a:hover {
+            border-color: #FF9800;
+        }
+
+        .nav a.active {
+            background-color: #FF9800;
+            color: #000;
+        }
+
+        /* --- Conteúdo principal --- */
+        .content-wrapper {
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 60px;
+        }
+
+        .subtitle {
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .names-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .group-title {
+            margin-top: 18px;
+            margin-bottom: 4px;
+            font-weight: bold;
+            color: #00bcd4;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .name-card {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.98rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .name-card:hover {
+            border-color: #FF9800;
+        }
+
+        .name-text {
+            flex: 1;
+        }
+
+        .copy-btn {
+            background-color: #FF9800;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .copy-btn:hover {
+            background-color: #e68a00;
+            transform: translateY(-1px);
+        }
+
+        .copy-btn.copied {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        /* --- Rodapé --- */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #fff;
+            border-top: 1px solid #333;
+            font-size: 1.1em;
+            --iframe-w: 180px;
+            --iframe-h: 48px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 12px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        #online-alarm-kur-iframe {
+            width: var(--iframe-w);
+            height: var(--iframe-h);
+            border: 0;
+            overflow: hidden;
+        }
+
+        .footer-spacer {
+            width: var(--iframe-w);
+            height: var(--iframe-h);
+        }
+
+        #countdown {
+            font-weight: bold;
+            color: #FF9800;
+        }
+
+        @media (max-width: 420px) {
+            .footer {
+                --iframe-w: 150px;
+                --iframe-h: 42px;
+            }
+            .footer-grid {
+                gap: 8px;
+                font-size: 1em;
+            }
+
+            .name-card {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .copy-btn {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho com tabs -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">Localizar Chamados</div>
+            <nav class="nav">
+                <a href="index.html">Pesquisa</a>
+                <a href="funcional.html">Funcional</a>
+                <a href="nomes.html" class="active">Nomes</a>
+            </nav>
+        </div>
+    </header>
+
+    <h1>Nomes para Teams</h1>
+    <div class="content-wrapper">
+        <div class="subtitle">
+            Clique em "Copiar" no nome que quiser usar no Teams. 😄
+        </div>
+
+        <div class="names-list">
+            <!-- Grupo DBA -->
+            <div class="group-title">DBA</div>
+
+            <div class="name-card">
+                <span class="name-text">Guardião Supremo das Queries Desastrosas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Mentor Sênior de “Não Roda Esse UPDATE Sem WHERE”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Engenheiro Chefe da Recuperação do Que o Estagiário Fez</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Especialista em Reverter DROP Acidental</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Coordenador de Indexes que Ninguém Usa</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Consultor Internacional de Deadlocks Involuntários</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Instrutor Oficial de Backups que Nunca Foram Feitos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Arquiteto das Tabelas Bagunçadas Pelo Estagiário</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Mestre Jedi do “Não Mexe Nessa Produção!”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista Sênior de Queries que Rodam Até Amanhã</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Supervisor de Estagiário com Acesso Demais</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Engenheiro de Otimização de SELECTs Impossíveis</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Gestor de Locks Existenciais</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Especialista em “Rodei Sem Querer na Prod…”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Treinador Pokémon de Estagiários com Poder de DROP</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Cientista de Performance Degradada Misteriosamente</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Chefe de “Por Que Essa Tabela Tá com 8 Bilhões de Linhas?”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Auditor Oficial de Índices Criados por Desespero</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista Líder do “Tenta Não Travar o Banco Hoje”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Consultor Técnico de Tabelas com Nome Errado</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Professor de “Explique o Plano, Não Apenas Rode”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Supervisor Global de Ambientes que o Estagiário Quebrou</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Gestor de Replicações que Sumiram Sem Motivo</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Diretor de Consultas que Parecem Feitas pelo Inimigo</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Especialista Certificado em “Rollback É Vida”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista Sênior de Erros ORA-* Que Só Ele Entende</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Curador de Scripts Perdidos no Desktop do Estagiário</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Mestre dos Backups de 12 Horas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Líder Espiritual da Query Otimizada</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+
+            <!-- Grupo Estagiarios -->
+            <div class="group-title">Estagiarios</div>
+
+            <div class="name-card">
+                <span class="name-text">Instrutor Internacional de Estagiários Perdidos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Mentor Sênior em “Calma, Respira e Faz de Novo”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Coordenador de Dúvidas Infinitas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Especialista em Traduzir o Óbvio</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Gerente de Expectativas do Estagiário</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Supervisor de Desastres Controlados</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista Líder de “Deixa Que Eu Te Mostro de Novo”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Mestre dos Tutoriais Não Lidos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Engenheiro da Paciência Inesgotável</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Coach Corporativo de Ctrl+Z</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Consultor Técnico em “Não Era Pra Clicar Ali”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Mentor Emocional de Primeiros Deploys</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Gerente de Incidentes Causados por Boa Intenção</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Treinador Pokémon de Estagiários</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Arquiteto de Conhecimento Básico Repetido</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista Sênior de “Não, Isso Não Vai Pro Ar”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Especialista em Reverter o Que o Estagiário Fez</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Líder Global de Repasse do Mesmo Procedimento</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Facilitador Master de Onboardings Sem Fim</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Gestor de Tarefas que Viraram Aulas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Professor de “Copia Aqui e Cola Ali”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Cientista das Perguntas que Não Têm Fim</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Head de Explicar a Mesma Coisa Diferente</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Consultor de Crise do Estagiário em Pânico</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Auditor de Testes Não Feitos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Mestre Jedi do “Relaxa, Acontece”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Coordenador de Pequenos Caos Corporativos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista de Suporte Psicológico ao Estagiário</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+
+            <!-- Nomes gerais já existentes -->
+            <div class="group-title">Geral</div>
+
+            <div class="name-card">
+                <span class="name-text">Chefe da Solução Imediata</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Mestre dos Deploys Impossíveis</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista de Tudo e Mais um Pouco</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Lorde das Requisições</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Barão dos Chamados Abertos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">O Cara da TI (mesmo não sendo)</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Professor Pardal do Setor</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Rei do “Já Tentei Reiniciar?”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Consultor Sênior de Problemas Alheios</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Engenheiro de Gambiarra Certificada</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Diretor de Problemas Não Resolvidos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+
+            <div class="name-card">
+                <span class="name-text">CEO das Desculpas Técnicas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Engenheiro Oficial da Gambiarra Premium</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Consultor Pleno em “Funciona na Minha Máquina”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Especialista em Chamar Alguém Que Sabe</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Rei do “Já Tentou Desligar e Ligar?”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Supervisor de Bugs Espontâneos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Mestre Jedi da Não Prioridade</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Coordenador de Demandas Inexistentes</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Padrinho das Tasks Que Ninguém Quer</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Lorde Supremo da Pancada no Servidor</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista Sênior de Cliques Aleatórios</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Gestor de Expectativas Quebradas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Operador Avançado de Ctrl+C Ctrl+V</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Auditor Oficial de Chamados Mal Abertos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Papai Noel das Promessas Pro Fim do Dia</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Engenheiro de Soluções Temporárias Eternas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Campeão Mundial de “Deixa Comigo”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Doutor em Evitar Reuniões Desnecessárias</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Investigador de Bugs Sobrenaturais</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Treinador Pokémon de Estagiários</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Supervisor de Tabajara Deploys</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+
+            <div class="name-card">
+                <span class="name-text">Chefe Global da T.I. Emocional</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Especialista em Resolver o Que Ninguém Pediu</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Engenheiro Estratégico de Expectativas Irreais</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Gerente de Prioridades Invisíveis</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Consultor de Alto Nível em “Depois a Gente Vê”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Coordenador de Projetos que Nasceram Mortos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista de Risco Emocional das Sprints</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Diretor Executivo de Soluções Improváveis</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Supervisor de Alinhamentos Eternos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Gestor de Entregas Quase Prontas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Líder Técnico de Ajustes Mágicos</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Curador Oficial de Reuniões Desnecessárias</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Especialista em Destravar Processos Travados</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Chefe das Melhorias que Nunca Chegam</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Consultor Master em “Passar a Bola”</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Estrategista de Problemas que Surgem do Nada</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Designer de Fluxos que Só Ele Entende</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Engenheiro de Otimizações Inesperadas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Arquiteto de Soluções que Parecem Simples</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Analista de Produtividade Baseada em Café</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Coordenador de Demandas com Deadline Ontem</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Diretor de Relatórios que Ninguém Lê</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Curador de Evidências que Comprovam Nada</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Especialista de Alto Impacto em Big Nada</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Supervisor Internacional de Microdecisões</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Consultor Técnico de Ambiguidades Corporativas</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Head de Conversas que Podiam Ser um E-mail</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Coordenador Global de Processos Sem Dono</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+            <div class="name-card">
+                <span class="name-text">Engenheiro de Middleware Entre Caos e Ordem</span>
+                <button class="copy-btn" onclick="copyName(this)">Copiar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="footer">
+        <div class="footer-grid">
+            <iframe
+                id="online-alarm-kur-iframe"
+                src="https://embed-countdown.onlinealarmkur.com/pt/#2025-12-25T00:00:00@America%2FSao_Paulo"
+                scrolling="no">
+            </iframe>
+
+            <div>
+                Tempo restante <span id="countdown">Carregando...</span>
+            </div>
+
+            <div class="footer-spacer" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <script>
+        function copyName(button) {
+            var card = button.closest(".name-card");
+            var textElement = card.querySelector(".name-text");
+            var text = textElement.innerText.trim();
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function () {
+                    showCopiedState(button);
+                }).catch(function () {
+                    fallbackCopyText(text, button);
+                });
+            } else {
+                fallbackCopyText(text, button);
+            }
+        }
+
+        function fallbackCopyText(text, button) {
+            var textarea = document.createElement("textarea");
+            textarea.value = text;
+            textarea.style.position = "fixed";
+            textarea.style.left = "-9999px";
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand("copy");
+                showCopiedState(button);
+            } catch (e) {
+                alert("Erro ao copiar");
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function showCopiedState(button) {
+            var original = button.innerText;
+            button.classList.add("copied");
+            button.innerText = "Copiado";
+            setTimeout(function () {
+                button.classList.remove("copied");
+                button.innerText = original;
+            }, 1500);
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const today = now.getDate();
+            const tomorrow = today + 1;
+            
+            let targetTime;
+            let targetLabel;
+            
+            const target17h = new Date(now.getFullYear(), now.getMonth(), today, 17, 0, 0);
+            const target18h = new Date(now.getFullYear(), now.getMonth(), today, 18, 0, 0);
+            const nextDay17h = new Date(now.getFullYear(), now.getMonth(), tomorrow, 17, 0, 0);
+
+            if (now < target17h) {
+                targetTime = target17h;
+                targetLabel = "para as 17:00";
+            } else if (now < target18h) {
+                targetTime = target18h;
+                targetLabel = "para as 18:00 (Fim do Expediente)";
+            } else {
+                targetTime = nextDay17h;
+                targetLabel = "para 17:00 de amanhã";
+            }
+
+            const diff = targetTime - now;
+            const countdownElement = document.getElementById('countdown');
+            if (!countdownElement) return;
+
+            if (diff <= 0) {
+                countdownElement.innerHTML = `<span style="color: #FF9800;">Objetivo atingido! Próxima contagem: ${targetLabel.replace(/\*\*/g, '')}.</span>`;
+            } else {
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const timeString = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                countdownElement.innerHTML = `${targetLabel}: <span style="color: #FF9800;">${timeString}</span>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>
