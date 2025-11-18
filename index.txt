@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localizar Chamados</title>
+    <link rel="icon" href="Y.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #FF9800;
+            margin-bottom: 20px;
+        }
+
+        header {
+            width: 100%;
+            background-color: #111;
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #FF9800;
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+        .nav a:hover {
+            border-color: #FF9800;
+        }
+
+        .nav a.active {
+            background-color: #FF9800;
+            color: #000;
+        }
+
+        .main-section {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #idInput {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #FF9800;
+            border-radius: 8px;
+            background-color: #222;
+            color: #fff;
+            font-size: 16px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        #openButton {
+            background-color: #FF9800;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        #openButton:hover {
+            background-color: #e68a00;
+        }
+
+        .history-section {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .history-section h2 {
+            color: #00bcd4;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        #recentList {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #recentList a {
+            display: block;
+            background-color: #333;
+            color: #fff;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.2s, color 0.2s;
+            border: 1px solid #555;
+        }
+
+        #recentList a:hover {
+            background-color: #00bcd4;
+            color: #000;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #fff;
+            border-top: 1px solid #333;
+            font-size: 1.1em;
+
+            --iframe-w: 180px;
+            --iframe-h: 48px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 12px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        #online-alarm-kur-iframe {
+            width: var(--iframe-w);
+            height: var(--iframe-h);
+            border: 0;
+            overflow: hidden;
+        }
+
+        .footer-spacer {
+            width: var(--iframe-w);
+            height: var(--iframe-h);
+        }
+
+        #countdown {
+            font-weight: bold;
+            color: #FF9800;
+        }
+
+        @media (max-width: 420px) {
+            .footer {
+                --iframe-w: 150px;
+                --iframe-h: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="logo">Localizar Chamados</div>
+        <nav class="nav">
+            <a href="index.html" class="active">Pesquisa</a>
+            <a href="funcional.html">Funcional</a>
+            <a href="nomes.html">Nomes</a>
+        </nav>
+    </div>
+</header>
+
+<h1>Chamados</h1>
+
+<div class="main-section">
+    <textarea id="idInput"></textarea>
+    <button id="openButton" onclick="openTickets()">Acessar</button>
+</div>
+
+<div class="history-section">
+    <h2>Chamados Recentes (Últimos 10)</h2>
+    <ul id="recentList"></ul>
+</div>
+
+<div class="footer">
+    <div class="footer-grid">
+        <iframe
+            id="online-alarm-kur-iframe"
+            src="https://embed-countdown.onlinealarmkur.com/pt/#2025-12-25T00:00:00@America%2FSao_Paulo"
+            scrolling="no">
+        </iframe>
+
+        <div>Tempo restante <span id="countdown">Carregando...</span></div>
+
+        <div class="footer-spacer"></div>
+    </div>
+</div>
+
+<script>
+    const STORAGE_KEY = 'recentTicketIDs';
+    const MAX_HISTORY = 10;
+    const BASE_URL = "https://support.sevensuite.com.br/TicketDossier/";
+    const SUFFIX = "/OpenBySequentialId";
+
+    function getRecentIDs() {
+        const data = localStorage.getItem(STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+    }
+
+    function updateHistory(newIds) {
+        let history = getRecentIDs();
+        for (const id of newIds.reverse()) {
+            history = history.filter(item => item !== id);
+            history.unshift(id);
+        }
+        if (history.length > MAX_HISTORY) {
+            history = history.slice(0, MAX_HISTORY);
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+        renderRecentList();
+    }
+
+    function renderRecentList() {
+        const listElement = document.getElementById('recentList');
+        const history = getRecentIDs();
+        listElement.innerHTML = '';
+
+        if (history.length === 0) {
+            listElement.innerHTML = '<li>Nenhum chamado recente.</li>';
+            return;
+        }
+
+        history.forEach(id => {
+            const fullURL = BASE_URL + id + SUFFIX;
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="${fullURL}" target="_blank">${id}</a>`;
+            listElement.appendChild(listItem);
+        });
+    }
+
+    function openTickets() {
+        const input = document.getElementById('idInput').value;
+        let ids = input.split(/[\s,]+|\n/)
+                       .map(id => id.trim())
+                       .filter(id => id && !isNaN(id));
+
+        if (ids.length === 0) {
+            alert('Por favor, digite pelo menos um ID válido.');
+            return;
+        }
+
+        const uniqueIds = [...new Set(ids)];
+
+        uniqueIds.forEach(id => {
+            const fullURL = BASE_URL + id + SUFFIX;
+            window.open(fullURL, '_blank');
+        });
+
+        updateHistory(uniqueIds);
+        document.getElementById('idInput').value = '';
+    }
+
+    function updateCountdown() {
+        const now = new Date();
+        const today = now.getDate();
+        const tomorrow = today + 1;
+
+        let targetTime;
+        let targetLabel;
+
+        const target17h = new Date(now.getFullYear(), now.getMonth(), today, 17, 0, 0);
+        const target18h = new Date(now.getFullYear(), now.getMonth(), today, 18, 0, 0);
+        const nextDay17h = new Date(now.getFullYear(), now.getMonth(), tomorrow, 17, 0, 0);
+
+        if (now < target17h) {
+            targetTime = target17h;
+            targetLabel = "para as 17:00";
+        } else if (now < target18h) {
+            targetTime = target18h;
+            targetLabel = "para as 18:00 (Fim do Expediente)";
+        } else {
+            targetTime = nextDay17h;
+            targetLabel = "para 17:00 de amanhã";
+        }
+
+        const diff = targetTime - now;
+        const countdownElement = document.getElementById('countdown');
+        if (!countdownElement) return;
+
+        if (diff <= 0) {
+            countdownElement.innerHTML = `<span style="color: #FF9800;">Objetivo atingido!</span>`;
+        } else {
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const timeString =
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            countdownElement.innerHTML = `${targetLabel}: <span style="color: #FF9800;">${timeString}</span>`;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderRecentList();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    });
+</script>
+
+</body>
+</html>
