@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacoes</title>
+    <link rel="icon" href="Y.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #FF9800;
+            margin-bottom: 20px;
+        }
+
+        /* --- Cabecalho / Navegacao --- */
+        header {
+            width: 100%;
+            background-color: #111;
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #FF9800;
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+        .nav a:hover {
+            border-color: #FF9800;
+        }
+
+        .nav a.active {
+            background-color: #FF9800;
+            color: #000;
+        }
+
+        /* --- Conteudo principal --- */
+        .content {
+            width: 100%;
+            max-width: 800px;
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .content h2 {
+            color: #00bcd4;
+            margin-top: 0;
+        }
+
+        .content p {
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .content ul {
+            margin: 10px 0 0 20px;
+            padding-left: 20px;
+        }
+
+        .content li {
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecalho com tabs -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">Localizar Chamados</div>
+            <nav class="nav">
+                <a href="pesquisa.html">Pesquisa</a>
+                <a href="funcional.html">Funcional</a>
+                <a href="nomes.html">Nomes</a>
+                <a href="informacoes.html" class="active">Informacoes</a>
+            </nav>
+        </div>
+    </header>
+
+    <h1>Informacoes</h1>
+
+    <div class="content">
+        <h2>Caminho para aprovacao de RDM</h2>
+
+        <p>Caso tiver duvidas do caminho onde e feito a aprovacao:</p>
+
+        <ul>
+            <li>Acessar o sevensuit: 
+                <a href="https://management.sevensuite.com.br/Home" target="_blank">
+                    https://management.sevensuite.com.br/Home
+                </a>
+            </li>
+            <li>Clicar no icone de fone;</li>
+            <li>Painel de aprovacoes;</li>
+            <li>Clicar em Registro de Mudanca;</li>
+            <li>Localizar a RDM informada para aprovacao;</li>
+        </ul>
+    </div>
+
+</body>
+</html>
