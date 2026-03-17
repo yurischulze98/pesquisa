@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analistas - Gestão</title>
+    <title>Analistas - Gestao</title>
     <link rel="icon" href="Y.ico" type="image/x-icon">
     <style>
         body {
@@ -21,21 +21,25 @@
 
         h1 { color: #FF9800; margin-bottom: 20px; }
 
-        /* --- Navegação --- */
         header { width: 100%; background-color: #111; border-bottom: 1px solid #333; margin-bottom: 20px; }
         .header-inner { max-width: 1100px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
         .logo { font-size: 1.5rem; font-weight: bold; color: #FF9800; }
-        .nav { display: flex; gap: 15px; }
+        .nav { display: flex; gap: 15px; flex-wrap: wrap; }
         .nav a { color: #ccc; text-decoration: none; padding: 8px 12px; border-radius: 4px; transition: 0.2s; }
         .nav a:hover { background-color: #333; color: #fff; }
         .nav a.active { background-color: #FF9800; color: #000; font-weight: bold; }
 
-        /* --- Filtro de Busca --- */
-        .search-container {
+        .search-container,
+        .table-container,
+        .status-box,
+        .form-container {
             width: 100%;
             max-width: 1100px;
-            margin-bottom: 15px;
+            box-sizing: border-box;
         }
+
+        .search-container { margin-bottom: 15px; }
+
         .search-container input {
             width: 100%;
             padding: 12px;
@@ -47,45 +51,65 @@
             font-size: 1rem;
         }
 
-        /* --- Tabela --- */
         .table-container {
-            width: 100%;
-            max-width: 1100px;
             background-color: #111;
             border-radius: 8px;
             padding: 20px;
-            box-sizing: border-box;
             margin-bottom: 20px;
             overflow-x: auto;
         }
+
         table { width: 100%; border-collapse: collapse; text-align: left; }
         th, td { padding: 12px 15px; border-bottom: 1px solid #333; }
         th { background-color: #222; color: #FF9800; }
-        
-        /* Botões de Ação */
-        .btn-edit { background-color: #2196F3; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-right: 5px; }
-        .btn-delete { background-color: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+
+        .btn-edit,
+        .btn-delete {
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .btn-edit { background-color: #2196F3; }
+        .btn-delete { background-color: #f44336; }
         .btn-edit:hover { background-color: #0b7dda; }
         .btn-delete:hover { background-color: #da190b; }
 
-        /* --- Formulário --- */
         .form-container {
-            width: 100%;
-            max-width: 1100px;
             background-color: #111;
             border-radius: 8px;
             padding: 20px;
-            box-sizing: border-box;
             display: flex;
             gap: 15px;
             align-items: flex-end;
             flex-wrap: wrap;
             border: 1px solid #333;
         }
-        .form-group { display: flex; flex-direction: column; flex: 1; min-width: 200px; }
-        .form-group label { margin-bottom: 5px; color: #aaa; font-size: 0.9rem; }
-        .form-group input { padding: 10px; background-color: #222; border: 1px solid #444; color: #fff; border-radius: 4px; }
-        
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            padding: 10px;
+            background-color: #222;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 4px;
+        }
+
         #btn-main {
             padding: 10px 20px;
             background-color: #FF9800;
@@ -95,6 +119,42 @@
             font-weight: bold;
             cursor: pointer;
             height: 40px;
+        }
+
+        .status-box {
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .status-ok {
+            display: block;
+            background-color: rgba(46, 125, 50, 0.2);
+            border: 1px solid #2e7d32;
+            color: #a5d6a7;
+        }
+
+        .status-error {
+            display: block;
+            background-color: rgba(198, 40, 40, 0.2);
+            border: 1px solid #c62828;
+            color: #ef9a9a;
+        }
+
+        .form-hint {
+            width: 100%;
+            color: #9e9e9e;
+            font-size: 0.9rem;
+            margin-top: -5px;
+        }
+
+        @media (max-width: 700px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -107,7 +167,7 @@
                 <a href="index.html">Pesquisa</a>
                 <a href="funcional.html">Funcional</a>
                 <a href="nomes.html">Nomes</a>
-                <a href="informacoes.html">Informações</a>
+                <a href="informacoes.html">Informacoes</a>
                 <a href="analistas.html" class="active">Analistas</a>
             </nav>
         </div>
@@ -115,8 +175,15 @@
 
     <h1>Planilha de Analistas</h1>
 
+    <div id="status" class="status-box"></div>
+
     <div class="search-container">
-        <input type="text" id="inputBusca" placeholder="🔍 Buscar por nome, torre ou função..." onkeyup="filtrarTabela()">
+        <input
+            type="text"
+            id="inputBusca"
+            placeholder="Buscar por nome, torre ou funcao..."
+            onkeyup="filtrarTabela()"
+        >
     </div>
 
     <div class="table-container">
@@ -125,8 +192,8 @@
                 <tr>
                     <th>Nome do Analista</th>
                     <th>Torre</th>
-                    <th>Função</th>
-                    <th style="width: 150px;">Ações</th>
+                    <th>Funcao</th>
+                    <th style="width: 150px;">Acoes</th>
                 </tr>
             </thead>
             <tbody id="tabela-corpo"></tbody>
@@ -134,145 +201,112 @@
     </div>
 
     <div class="form-container">
-        <input type="hidden" id="edit-index" value="-1">
+        <input type="hidden" id="edit-id" value="">
+
         <div class="form-group">
             <label>Nome do Analista</label>
             <input type="text" id="nome">
         </div>
+
         <div class="form-group">
             <label>Torre (Equipe)</label>
             <input type="text" id="torre">
         </div>
+
         <div class="form-group">
-            <label>Função (Cargo)</label>
+            <label>Funcao (Cargo)</label>
             <input type="text" id="funcao">
         </div>
+
+        <div class="form-group">
+            <label>Token admin (opcional)</label>
+            <input type="password" id="admin-token" placeholder="Use apenas se configurar ADMIN_TOKEN na Vercel">
+        </div>
+
         <button id="btn-main" onclick="salvarAnalista()">Adicionar Analista</button>
+        <div class="form-hint">Se voce configurar a variavel ADMIN_TOKEN na Vercel, sera preciso informar esse token para adicionar, editar e remover.</div>
     </div>
 
     <script>
         let analistas = [];
-        const dadosIniciais = [
-            { nome: "Matheus Josias Rosa", torre: "Redes", funcao: "Lider" },
-            { nome: "Joseph Barcos", torre: "Redes", funcao: "Analista" },
-            { nome: "Willian Jhoni de Souza", torre: "Redes", funcao: "Analista" },
-            { nome: "Alan Vitor da Costa Egeia", torre: "Redes", funcao: "Analista" },
-            { nome: "Matheus Campos", torre: "Redes", funcao: "Analista" },
-            { nome: "João Sangalli", torre: "Redes", funcao: "Analista" },
-            { nome: "Mauricio Silva", torre: "Redes", funcao: "Analista" },
-            { nome: "Matheus Correa", torre: "Redes", funcao: "Analista" },
-            { nome: "William Rennan de Castro Vidal", torre: "Redes", funcao: "Analista" },
-            { nome: "Alex Bado", torre: "Redes", funcao: "Analista" },
-            { nome: "Fernando Perin", torre: "Redes", funcao: "Analista" },
-            { nome: "Cesar Augusto Becerra Oquendo", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Artur Xavier de Sousa", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Rafael Baier", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Liam Siqueira de França", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "João Siqueira Mottini", torre: "Banco de Dados - Oracle", funcao: "Lider" },
-            { nome: "Anderson Haertel Rodrigues", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Alexandre B. Verri", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Jose Carlos dos Anjos Junior", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Gustavo do Amaral Cercal", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Felipe Kolombesky", torre: "Banco de Dados - Oracle", funcao: "Coordenador" },
-            { nome: "Radjalma Costa Junior", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Maicon Vanelli", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Jackson Eduardo Barbi", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Caue Mira", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Leonardo da Silva Dutra", torre: "Banco de Dados - Oracle", funcao: "Analista" },
-            { nome: "Rafaela Gusczak", torre: "Banco de Dados - Oracle", funcao: "Estagiario" },
-            { nome: "Henrique Vieira Sacht", torre: "Banco de Dados - Oracle", funcao: "Estagiario" },
-            { nome: "Vitor Keller", torre: "Banco de Dados - Oracle", funcao: "Estagiario" },
-            { nome: "Marcos Roberto Pavan", torre: "Banco de Dados - ATG - Oracle", funcao: "Analista" },
-            { nome: "Alessandro de Simas Dias", torre: "Banco de Dados - ATG - Oracle", funcao: "Lider" },
-            { nome: "Cleiton Luiz Hanzen", torre: "Banco de Dados - ATG - Oracle", funcao: "Analista" },
-            { nome: "Marcos Antonio Martinho Vitorio", torre: "Banco de Dados - ATG - Oracle", funcao: "Analista" },
-            { nome: "Elizandra Regiane Persuhn Coelho", torre: "Banco de Dados - ATG - Oracle", funcao: "Analista" },
-            { nome: "Johnny Indersan Kis", torre: "Microsoft", funcao: "Lider" },
-            { nome: "Michelle Motta", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Gustavo Soldati", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Yuri Tales Ribeiro", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Vilson Freiberger", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Thomas Edson Mattos Roeder", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Alexandre Borges", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Frederico Matthes", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Danilo César da Silva", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Mateus Bosqui", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Robson Escher", torre: "Microsoft", funcao: "Analista" },
-            { nome: "Felipe Fernandes", torre: "Backup", funcao: "Analista" },
-            { nome: "Renan Felipi Santos", torre: "Backup", funcao: "Lider" },
-            { nome: "Cristofer Silva Lima", torre: "Backup", funcao: "Analista" },
-            { nome: "Felipe Schneider", torre: "Backup", funcao: "Analista" },
-            { nome: "Bruno dos Santos", torre: "Linux", funcao: "Lider" },
-            { nome: "Carla Amorim", torre: "Linux", funcao: "Analista" },
-            { nome: "Leonardo dos Santos", torre: "Linux", funcao: "Analista" },
-            { nome: "Ruan Lucas Petschow da Silva", torre: "Linux", funcao: "Analista" },
-            { nome: "Marcelo Fernandes", torre: "SAP", funcao: "Lider" },
-            { nome: "Fernando Santos de Araujo", torre: "SAP", funcao: "Analista" },
-            { nome: "José Roberto Alves de Lima", torre: "SAP", funcao: "Analista" },
-            { nome: "Weslley Antonio Queiroz Felix", torre: "Segurança da Informação", funcao: "Coordenador" },
-            { nome: "Gabriel Dias Lopes", torre: "Segurança da Informação", funcao: "Lider" },
-            { nome: "André Luiz Dias Pires", torre: "Segurança da Informação", funcao: "Analista" },
-            { nome: "Darlisson Daniel Batista da Rocha", torre: "Segurança da Informação", funcao: "Analista" },
-            { nome: "Rafaella Kaline Melo Barbosa", torre: "Segurança da Informação", funcao: "Analista" },
-            { nome: "Marcio Tadeu da Costa Junior", torre: "Segurança da Informação", funcao: "Analista" },
-            { nome: "Ygor Cargnin", torre: "Banco de Dados - SQL Server", funcao: "Lider" },
-            { nome: "Thamires Rodrigues Vessani", torre: "Banco de Dados - SQL Server", funcao: "Analista" },
-            { nome: "Carlos Ernst", torre: "Banco de Dados - SQL Server", funcao: "Analista" },
-            { nome: "Ana Laura da Silva Muller", torre: "Banco de Dados - SQL Server", funcao: "Analista" },
-            { nome: "Gabriela Guilherme de Andrade", torre: "GRC", funcao: "Analista" },
-            { nome: "Jose Lucas Texeira", torre: "GRC", funcao: "Analista" },
-            { nome: "Eduardo Cavalheiro", torre: "Pós Vendas", funcao: "Analista" },
-            { nome: "Maynara Cristine Campos", torre: "Pós Vendas", funcao: "Analista" },
-            { nome: "Reginaldo Faoro", torre: "Pós Vendas", funcao: "Analista" },
-            { nome: "Thiago Kava", torre: "Pós Vendas", funcao: "Analista" },
-            { nome: "Matheus Alcantara dos Santos", torre: "Pós Vendas", funcao: "Analista" },
-            { nome: "Augusto Silva Amaral", torre: "NOC - Dia - Turno 1", funcao: "Analista" },
-            { nome: "Eliseu Richerd Hamann", torre: "NOC - Noturno - Turno 1", funcao: "Analista" },
-            { nome: "Beatriz Passos", torre: "NOC - Comercial", funcao: "Analista" },
-            { nome: "Flamarion Silva de Moraes", torre: "Lider - Dia", funcao: "Lider NOC Dia" },
-            { nome: "Guilherme Henrique da Silva", torre: "NOC - Noturno - Turno 2", funcao: "Analista" },
-            { nome: "Guilherme Salustiano da Silva", torre: "Lider - Noturno", funcao: "Lider NOC Noturno" },
-            { nome: "Gustavo Ryan César da Cruz", torre: "NOC - Noturno - Turno 2", funcao: "Analista" },
-            { nome: "Heitor Steffen", torre: "NOC - Dia - Turno 1", funcao: "Analista" },
-            { nome: "Henrique Passos Paz", torre: "NOC - Dia - Turno 1", funcao: "Analista" },
-            { nome: "Hugo Medeiros de Souza", torre: "NOC - Noturno - Turno 1", funcao: "Analista" },
-            { nome: "Israel Coutinho da Silva", torre: "NOC - Dia - Turno 2", funcao: "Analista" },
-            { nome: "Jorge Wellington Queiroz Felix", torre: "NOC - Comercial", funcao: "Analista" },
-            { nome: "Jakson Faust", torre: "Coordenador", funcao: "Cordenador de Suporte" },
-            { nome: "Kleber Alexandre da Costa", torre: "NOC - Dia - Turno 2", funcao: "Analista" },
-            { nome: "Nassur Khaled Murad Martins Lemos", torre: "NOC - Dia - Turno 1", funcao: "Analista" },
-            { nome: "Rafael Martins Teixeira Margarido", torre: "NOC - Dia - Turno 2", funcao: "Analista" },
-            { nome: "Ricardo dos Santos Licetti", torre: "NOC - Dia - Turno 2", funcao: "Analista" },
-            { nome: "Silvio Samy Silva", torre: "NOC - Dia - Turno 2", funcao: "Analista" },
-            { nome: "Tiago Assis Brasil", torre: "NOC - Dia - Turno 1", funcao: "Analista" },
-            { nome: "Matheus Daniel de Macedo", torre: "Requisições", funcao: "Analista" },
-            { nome: "Ketlin Karoline da Silva", torre: "Requisições", funcao: "Analista" },
-            { nome: "Yuri Edward Schulze", torre: "Requisições", funcao: "Analista" }
-        ];
 
-        function carregarDados() {
-            const dadosSalvos = localStorage.getItem('listaAnalistas');
-            analistas = dadosSalvos ? JSON.parse(dadosSalvos) : [...dadosIniciais];
-            if (!dadosSalvos) salvarNoStorage();
-            renderizarTabela();
+        function mostrarStatus(mensagem, tipo = "ok") {
+            const status = document.getElementById("status");
+            status.textContent = mensagem;
+            status.className = "status-box " + (tipo === "ok" ? "status-ok" : "status-error");
+        }
+
+        function limparStatus() {
+            const status = document.getElementById("status");
+            status.textContent = "";
+            status.className = "status-box";
+        }
+
+        function obterAdminToken() {
+            return document.getElementById("admin-token").value.trim();
+        }
+
+        function montarHeadersJson() {
+            const headers = { "Content-Type": "application/json" };
+            const adminToken = obterAdminToken();
+
+            if (adminToken) {
+                headers["x-admin-token"] = adminToken;
+            }
+
+            return headers;
+        }
+
+        async function parseJsonSegura(resposta) {
+            const texto = await resposta.text();
+
+            try {
+                return texto ? JSON.parse(texto) : {};
+            } catch (erro) {
+                console.error("Resposta invalida:", texto);
+                throw new Error("A API retornou uma resposta invalida.");
+            }
+        }
+
+        async function carregarDados() {
+            try {
+                const resposta = await fetch("/api/listar-analistas", { cache: "no-store" });
+                const resultado = await parseJsonSegura(resposta);
+
+                if (!resposta.ok) {
+                    throw new Error(resultado.mensagem || "Falha ao carregar os analistas.");
+                }
+
+                analistas = Array.isArray(resultado.analistas) ? resultado.analistas : [];
+                filtrarTabela();
+            } catch (erro) {
+                console.error(erro);
+                mostrarStatus(erro.message || "Erro ao carregar os analistas.", "error");
+            }
         }
 
         function renderizarTabela(dadosParaExibir = analistas) {
-            const tbody = document.getElementById('tabela-corpo');
-            tbody.innerHTML = '';
+            const tbody = document.getElementById("tabela-corpo");
+            tbody.innerHTML = "";
+
+            if (!dadosParaExibir.length) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4">Nenhum analista encontrado.</td>
+                    </tr>
+                `;
+                return;
+            }
 
             dadosParaExibir.forEach((analista) => {
-                // Encontrar o index original para as funções de deletar/editar
-                const indexOriginal = analistas.indexOf(analista);
-                
-                const tr = document.createElement('tr');
+                const tr = document.createElement("tr");
                 tr.innerHTML = `
-                    <td>${analista.nome}</td>
-                    <td>${analista.torre}</td>
-                    <td>${analista.funcao}</td>
+                    <td>${escaparHtml(analista.nome)}</td>
+                    <td>${escaparHtml(analista.torre)}</td>
+                    <td>${escaparHtml(analista.funcao)}</td>
                     <td>
-                        <button class="btn-edit" onclick="prepararEdicao(${indexOriginal})">Editar</button>
-                        <button class="btn-delete" onclick="removerAnalista(${indexOriginal})">Remover</button>
+                        <button class="btn-edit" onclick="prepararEdicao(${analista.id})">Editar</button>
+                        <button class="btn-delete" onclick="removerAnalista(${analista.id})">Remover</button>
                     </td>
                 `;
                 tbody.appendChild(tr);
@@ -280,62 +314,129 @@
         }
 
         function filtrarTabela() {
-            const termo = document.getElementById('inputBusca').value.toLowerCase();
-            const filtrados = analistas.filter(a => 
-                a.nome.toLowerCase().includes(termo) || 
-                a.torre.toLowerCase().includes(termo) || 
-                a.funcao.toLowerCase().includes(termo)
+            const termo = document.getElementById("inputBusca").value.toLowerCase();
+
+            const filtrados = analistas.filter((analista) =>
+                analista.nome.toLowerCase().includes(termo) ||
+                analista.torre.toLowerCase().includes(termo) ||
+                analista.funcao.toLowerCase().includes(termo)
             );
+
             renderizarTabela(filtrados);
         }
 
-        function salvarAnalista() {
-            const nome = document.getElementById('nome').value.trim();
-            const torre = document.getElementById('torre').value.trim();
-            const funcao = document.getElementById('funcao').value.trim();
-            const editIndex = parseInt(document.getElementById('edit-index').value);
+        async function salvarAnalista() {
+            limparStatus();
 
-            if (!nome || !torre || !funcao) return alert("Preencha todos os campos!");
+            const id = document.getElementById("edit-id").value;
+            const nome = document.getElementById("nome").value.trim();
+            const torre = document.getElementById("torre").value.trim();
+            const funcao = document.getElementById("funcao").value.trim();
 
-            if (editIndex === -1) {
-                analistas.push({ nome, torre, funcao });
-            } else {
-                analistas[editIndex] = { nome, torre, funcao };
-                document.getElementById('edit-index').value = "-1";
-                document.getElementById('btn-main').innerText = "Adicionar Analista";
+            if (!nome || !torre || !funcao) {
+                mostrarStatus("Preencha todos os campos.", "error");
+                return;
             }
 
-            limparCampos();
-            salvarNoStorage();
-            filtrarTabela(); // Atualiza a visualização respeitando a busca
-        }
+            const url = id ? "/api/editar-analista" : "/api/salvar-analista";
+            const payload = id
+                ? { id: Number(id), nome, torre, funcao }
+                : { nome, torre, funcao };
 
-        function prepararEdicao(index) {
-            const analista = analistas[index];
-            document.getElementById('nome').value = analista.nome;
-            document.getElementById('torre').value = analista.torre;
-            document.getElementById('funcao').value = analista.funcao;
-            document.getElementById('edit-index').value = index;
-            document.getElementById('btn-main').innerText = "Salvar Alteração";
-            document.getElementById('nome').focus();
-        }
+            try {
+                const resposta = await fetch(url, {
+                    method: "POST",
+                    headers: montarHeadersJson(),
+                    body: JSON.stringify(payload)
+                });
 
-        function removerAnalista(index) {
-            if (confirm(`Deseja realmente remover ${analistas[index].nome}?`)) {
-                analistas.splice(index, 1);
-                salvarNoStorage();
-                filtrarTabela();
+                const resultado = await parseJsonSegura(resposta);
+
+                if (!resposta.ok || !resultado.sucesso) {
+                    throw new Error(resultado.mensagem || "Nao foi possivel salvar.");
+                }
+
+                limparCampos();
+                limparModoEdicao();
+                await carregarDados();
+                mostrarStatus(resultado.mensagem || "Analista salvo com sucesso.");
+            } catch (erro) {
+                console.error(erro);
+                mostrarStatus(erro.message || "Erro ao salvar analista.", "error");
             }
         }
 
-        function salvarNoStorage() {
-            localStorage.setItem('listaAnalistas', JSON.stringify(analistas));
+        function prepararEdicao(id) {
+            const analista = analistas.find((item) => item.id === id);
+
+            if (!analista) {
+                mostrarStatus("Analista nao encontrado para edicao.", "error");
+                return;
+            }
+
+            document.getElementById("nome").value = analista.nome;
+            document.getElementById("torre").value = analista.torre;
+            document.getElementById("funcao").value = analista.funcao;
+            document.getElementById("edit-id").value = analista.id;
+            document.getElementById("btn-main").innerText = "Salvar Alteracao";
+            document.getElementById("nome").focus();
+        }
+
+        async function removerAnalista(id) {
+            const analista = analistas.find((item) => item.id === id);
+
+            if (!analista) {
+                mostrarStatus("Analista nao encontrado para remocao.", "error");
+                return;
+            }
+
+            const confirmou = confirm(`Deseja realmente remover ${analista.nome}?`);
+            if (!confirmou) return;
+
+            try {
+                const resposta = await fetch("/api/remover-analista", {
+                    method: "POST",
+                    headers: montarHeadersJson(),
+                    body: JSON.stringify({ id })
+                });
+
+                const resultado = await parseJsonSegura(resposta);
+
+                if (!resposta.ok || !resultado.sucesso) {
+                    throw new Error(resultado.mensagem || "Nao foi possivel remover.");
+                }
+
+                if (String(document.getElementById("edit-id").value) === String(id)) {
+                    limparCampos();
+                    limparModoEdicao();
+                }
+
+                await carregarDados();
+                mostrarStatus(resultado.mensagem || "Analista removido com sucesso.");
+            } catch (erro) {
+                console.error(erro);
+                mostrarStatus(erro.message || "Erro ao remover analista.", "error");
+            }
         }
 
         function limparCampos() {
-            document.getElementById('nome').value = '';
-            document.getElementById('torre').value = '';
-            document.getElementById('funcao').value = '';
+            document.getElementById("nome").value = "";
+            document.getElementById("torre").value = "";
+            document.getElementById("funcao").value = "";
+        }
+
+        function limparModoEdicao() {
+            document.getElementById("edit-id").value = "";
+            document.getElementById("btn-main").innerText = "Adicionar Analista";
+        }
+
+        function escaparHtml(valor) {
+            return String(valor)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
         }
 
         window.onload = carregarDados;
