@@ -218,9 +218,16 @@
         }
 
         .custom-select-option {
+            width: 100%;
+            display: block;
             padding: 10px 12px;
             cursor: pointer;
+            border: none;
             border-bottom: 1px solid #2c2c2c;
+            background: transparent;
+            color: #fff;
+            text-align: left;
+            font: inherit;
         }
 
         .custom-select-option:last-child {
@@ -751,6 +758,17 @@
                 mostrarStatus(erro.message || "Erro ao salvar a torre.", "error");
             }
         }
+
+
+        document.getElementById("torre-options").addEventListener("click", function(evento) {
+            const opcao = evento.target.closest(".custom-select-option");
+
+            if (!opcao) {
+                return;
+            }
+
+            selecionarTorre(opcao.dataset.value || "");
+        });
 
         document.addEventListener("click", function(evento) {
             const container = document.getElementById("torre-select");
