@@ -166,12 +166,23 @@
             box-sizing: border-box;
         }
 
+        .torre-toggle-wrap {
+            width: 100%;
+            margin-top: 14px;
+        }
+
         .torre-actions {
-            display: flex;
+            display: none;
             gap: 10px;
             width: 100%;
             flex-wrap: wrap;
-            margin-top: 4px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #2d2d2d;
+        }
+
+        .torre-actions.visible {
+            display: flex;
         }
 
         .torre-actions .form-group {
@@ -180,7 +191,8 @@
 
         .btn-primary,
         .btn-secondary,
-        .btn-inline {
+        .btn-inline,
+        .btn-toggle {
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
@@ -208,6 +220,12 @@
             background-color: #4CAF50;
             color: #fff;
             min-width: 150px;
+        }
+
+        .btn-toggle {
+            background-color: #2b2b2b;
+            color: #fff;
+            border: 1px solid #444;
         }
 
         .small-text {
@@ -308,12 +326,17 @@
             <button id="btn-cancelar" class="btn-secondary" onclick="cancelarEdicao()">Cancelar</button>
         </div>
 
-        <div class="torre-actions">
+        <div class="torre-toggle-wrap">
+            <button id="btn-toggle-torre" class="btn-toggle" onclick="toggleNovaTorre()">+ Adicionar nova torre</button>
+        </div>
+
+        <div id="torre-actions" class="torre-actions">
             <div class="form-group">
                 <label>Adicionar nova torre</label>
                 <input type="text" id="nova-torre" placeholder="Ex.: Cloud, Aplicacao, Banco...">
             </div>
-            <button class="btn-inline" onclick="salvarTorre()">Adicionar Torre</button>
+            <button class="btn-inline" onclick="salvarTorre()">Salvar Torre</button>
+            <button class="btn-secondary visible" type="button" onclick="fecharNovaTorre()">Cancelar</button>
         </div>
     </div>
 
@@ -464,6 +487,31 @@
             renderizarTabela(filtrada);
         }
 
+        function toggleNovaTorre() {
+            const area = document.getElementById("torre-actions");
+            const input = document.getElementById("nova-torre");
+            const botao = document.getElementById("btn-toggle-torre");
+            const visivel = area.classList.toggle("visible");
+
+            botao.textContent = visivel ? "Ocultar nova torre" : "+ Adicionar nova torre";
+
+            if (visivel) {
+                input.focus();
+            } else {
+                input.value = "";
+            }
+        }
+
+        function fecharNovaTorre() {
+            const area = document.getElementById("torre-actions");
+            const input = document.getElementById("nova-torre");
+            const botao = document.getElementById("btn-toggle-torre");
+
+            area.classList.remove("visible");
+            input.value = "";
+            botao.textContent = "+ Adicionar nova torre";
+        }
+
         function entrarModoEdicao(item) {
             document.getElementById("edit-id").value = item.id;
             document.getElementById("nome").value = item.nome;
@@ -592,6 +640,7 @@
 
                 document.getElementById("nova-torre").value = "";
                 await carregarTorres(resultado.torre?.nome || nome);
+                fecharNovaTorre();
                 mostrarStatus(resultado.mensagem || "Torre salva com sucesso.", "ok");
             } catch (erro) {
                 mostrarStatus(erro.message || "Erro ao salvar a torre.", "error");
