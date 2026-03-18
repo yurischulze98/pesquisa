@@ -162,8 +162,22 @@
             border: 1px solid #444;
             color: #fff;
             border-radius: 4px;
-            height: 42px;
             box-sizing: border-box;
+        }
+
+        .form-group input {
+            height: 42px;
+        }
+
+        .form-group select {
+            min-height: 42px;
+            height: 42px;
+        }
+
+        .form-group select.expanded {
+            height: auto;
+            max-height: 220px;
+            overflow-y: auto;
         }
 
         .torre-toggle-wrap {
@@ -307,7 +321,7 @@
 
             <div class="form-group">
                 <label>Torre (Equipe)</label>
-                <select id="torre">
+                <select id="torre" size="1" onfocus="expandirSelectTorre()" onblur="recolherSelectTorre()" onchange="recolherSelectTorre()">
                     <option value="">Selecione uma torre</option>
                 </select>
             </div>
@@ -415,6 +429,21 @@
             `).join("");
         }
 
+        function expandirSelectTorre() {
+            const select = document.getElementById("torre");
+            const totalOpcoes = select.options.length;
+            const visiveis = Math.min(Math.max(totalOpcoes, 2), 6);
+
+            select.size = visiveis;
+            select.classList.add("expanded");
+        }
+
+        function recolherSelectTorre() {
+            const select = document.getElementById("torre");
+            select.size = 1;
+            select.classList.remove("expanded");
+        }
+
         function renderizarSelectTorres(valorSelecionado = "") {
             const select = document.getElementById("torre");
             const options = ['<option value="">Selecione uma torre</option>'];
@@ -433,6 +462,8 @@
                 extra.selected = true;
                 select.appendChild(extra);
             }
+
+            recolherSelectTorre();
         }
 
         async function carregarTorres(valorSelecionado = "") {
