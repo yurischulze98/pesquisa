@@ -155,29 +155,82 @@
             font-size: 0.9rem;
         }
 
-        .form-group input,
-        .form-group select {
+        .form-group input {
             padding: 10px;
             background-color: #222;
             border: 1px solid #444;
             color: #fff;
             border-radius: 4px;
             box-sizing: border-box;
-        }
-
-        .form-group input {
             height: 42px;
         }
 
-        .form-group select {
-            min-height: 42px;
-            height: 42px;
+        .custom-select {
+            position: relative;
         }
 
-        .form-group select.expanded {
-            height: auto;
-            max-height: 220px;
+        .custom-select-trigger {
+            width: 100%;
+            height: 42px;
+            padding: 10px 38px 10px 10px;
+            background-color: #222;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 4px;
+            box-sizing: border-box;
+            text-align: left;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .custom-select-trigger::after {
+            content: "▾";
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+
+        .custom-select.open .custom-select-trigger {
+            border-color: #FF9800;
+        }
+
+        .custom-select-options {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background-color: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+            max-height: 210px;
             overflow-y: auto;
+            display: none;
+            z-index: 30;
+        }
+
+        .custom-select.open .custom-select-options {
+            display: block;
+        }
+
+        .custom-select-option {
+            padding: 10px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #2c2c2c;
+        }
+
+        .custom-select-option:last-child {
+            border-bottom: none;
+        }
+
+        .custom-select-option:hover,
+        .custom-select-option.active {
+            background-color: #2b2b2b;
+            color: #FF9800;
         }
 
         .torre-toggle-wrap {
@@ -321,9 +374,13 @@
 
             <div class="form-group">
                 <label>Torre (Equipe)</label>
-                <select id="torre" size="1" onfocus="expandirSelectTorre()" onblur="recolherSelectTorre()" onchange="recolherSelectTorre()">
-                    <option value="">Selecione uma torre</option>
-                </select>
+                <input type="hidden" id="torre">
+                <div class="custom-select" id="torre-select">
+                    <button type="button" class="custom-select-trigger" id="torre-trigger" onclick="toggleDropdownTorre()">
+                        Selecione uma torre
+                    </button>
+                    <div class="custom-select-options" id="torre-options"></div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -444,26 +501,41 @@
             select.classList.remove("expanded");
         }
 
+        function fecharDropdownTorre() {
+            document.getElementById("torre-select").classList.remove("open");
+        }
+
+        function toggleDropdownTorre() {
+            document.getElementById("torre-select").classList.toggle("open");
+        }
+
+        function selecionarTorre(valor) {
+            document.getElementById("torre").value = valor;
+            document.getElementById("torre-trigger").textContent = valor || "Selecione uma torre";
+            fecharDropdownTorre();
+        }
+
         function renderizarSelectTorres(valorSelecionado = "") {
-            const select = document.getElementById("torre");
-            const options = ['<option value="">Selecione uma torre</option>'];
+            const input = document.getElementById("torre");
+            const options = document.getElementById("torre-options");
+            const trigger = document.getElementById("torre-trigger");
+            const valorAtual = valorSelecionado || input.value || "";
+
+            input.value = valorAtual;
+            trigger.textContent = valorAtual || "Selecione uma torre";
+
+            const itens = ['<div class="custom-select-option' + (!valorAtual ? ' active' : '') + '" onclick="selecionarTorre(\'\')">Selecione uma torre</div>'];
 
             torres.forEach(item => {
-                const selecionado = item.nome === valorSelecionado ? ' selected' : '';
-                options.push(`<option value="${escapeHtml(item.nome)}"${selecionado}>${escapeHtml(item.nome)}</option>`);
+                const ativo = item.nome === valorAtual ? ' active' : '';
+                itens.push(`<div class="custom-select-option${ativo}" onclick="selecionarTorre(${JSON.stringify(item.nome)})">${escapeHtml(item.nome)}</div>`);
             });
 
-            select.innerHTML = options.join('');
-
-            if (valorSelecionado && !torres.some(item => item.nome === valorSelecionado)) {
-                const extra = document.createElement('option');
-                extra.value = valorSelecionado;
-                extra.textContent = valorSelecionado;
-                extra.selected = true;
-                select.appendChild(extra);
+            if (valorAtual && !torres.some(item => item.nome === valorAtual)) {
+                itens.push(`<div class="custom-select-option active" onclick="selecionarTorre(${JSON.stringify(valorAtual)})">${escapeHtml(valorAtual)}</div>`);
             }
 
-            recolherSelectTorre();
+            options.innerHTML = itens.join("");
         }
 
         async function carregarTorres(valorSelecionado = "") {
@@ -552,6 +624,7 @@
             document.getElementById("btn-cancelar").classList.add("visible");
             document.getElementById("edit-badge").classList.add("active");
             renderizarSelectTorres(item.torre);
+            fecharDropdownTorre();
             document.getElementById("nome").focus();
             limparStatus();
         }
@@ -566,6 +639,7 @@
             document.getElementById("btn-cancelar").classList.remove("visible");
             document.getElementById("edit-badge").classList.remove("active");
             renderizarSelectTorres();
+            fecharDropdownTorre();
             limparStatus();
         }
 
@@ -677,6 +751,13 @@
                 mostrarStatus(erro.message || "Erro ao salvar a torre.", "error");
             }
         }
+
+        document.addEventListener("click", function(evento) {
+            const container = document.getElementById("torre-select");
+            if (container && !container.contains(evento.target)) {
+                fecharDropdownTorre();
+            }
+        });
 
         async function inicializarPagina() {
             await carregarTorres();
