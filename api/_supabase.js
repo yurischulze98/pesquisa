@@ -1,6 +1,7 @@
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY;
 const SUPABASE_TABLE = process.env.SUPABASE_TABLE || 'analistas';
+const SUPABASE_TORRES_TABLE = process.env.SUPABASE_TORRES_TABLE || 'torres';
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
 
 function getBaseHeaders() {
@@ -15,9 +16,17 @@ function getBaseHeaders() {
   };
 }
 
-function getTableUrl(query = '') {
+function getResourceUrl(resource, query = '') {
   const cleanUrl = SUPABASE_URL.replace(/\/$/, '');
-  return `${cleanUrl}/rest/v1/${SUPABASE_TABLE}${query}`;
+  return `${cleanUrl}/rest/v1/${resource}${query}`;
+}
+
+function getTableUrl(query = '') {
+  return getResourceUrl(SUPABASE_TABLE, query);
+}
+
+function getTorresUrl(query = '') {
+  return getResourceUrl(SUPABASE_TORRES_TABLE, query);
 }
 
 function sendJson(res, statusCode, payload) {
@@ -88,7 +97,10 @@ async function supabaseFetch(url, options = {}) {
 
 module.exports = {
   SUPABASE_TABLE,
+  SUPABASE_TORRES_TABLE,
+  getResourceUrl,
   getTableUrl,
+  getTorresUrl,
   sendJson,
   requirePost,
   requireAdminToken,
