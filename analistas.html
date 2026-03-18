@@ -531,15 +531,22 @@
             input.value = valorAtual;
             trigger.textContent = valorAtual || "Selecione uma torre";
 
-            const itens = ['<div class="custom-select-option' + (!valorAtual ? ' active' : '') + '" onclick="selecionarTorre(\'\')">Selecione uma torre</div>'];
+            const itens = [
+                `<div class="custom-select-option${!valorAtual ? ' active' : ''}" data-value="">Selecione uma torre</div>`
+            ];
 
             torres.forEach(item => {
-                const ativo = item.nome === valorAtual ? ' active' : '';
-                itens.push(`<div class="custom-select-option${ativo}" onclick="selecionarTorre(${JSON.stringify(item.nome)})">${escapeHtml(item.nome)}</div>`);
+                const nomeTorre = String(item.nome || "");
+                const ativo = nomeTorre === valorAtual ? ' active' : '';
+                itens.push(
+                    `<div class="custom-select-option${ativo}" data-value="${escapeHtml(nomeTorre)}">${escapeHtml(nomeTorre)}</div>`
+                );
             });
 
             if (valorAtual && !torres.some(item => item.nome === valorAtual)) {
-                itens.push(`<div class="custom-select-option active" onclick="selecionarTorre(${JSON.stringify(valorAtual)})">${escapeHtml(valorAtual)}</div>`);
+                itens.push(
+                    `<div class="custom-select-option active" data-value="${escapeHtml(valorAtual)}">${escapeHtml(valorAtual)}</div>`
+                );
             }
 
             options.innerHTML = itens.join("");
