@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gestao de Analistas</title>
+    <link rel="icon" href="Y.ico" type="image/x-icon">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            width: 100%;
+            background-color: #111;
+            border-bottom: 1px solid #333;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: bold;
+            color: #FF9800;
+        }
+
+        .header-text {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .login-shell {
+            width: 100%;
+            max-width: 430px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .login-title {
+            margin: 0 0 8px;
+            color: #FF9800;
+            font-size: 1.8rem;
+			text-align: center;
+        }
+
+        .login-subtitle {
+            margin: 0 0 24px;
+            color: #aaa;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .status-box {
+            display: none;
+            margin-bottom: 16px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            line-height: 1.45;
+        }
+
+        .status-ok {
+            display: block;
+            background-color: rgba(46, 125, 50, 0.2);
+            border: 1px solid #2e7d32;
+            color: #a5d6a7;
+        }
+
+        .status-error {
+            display: block;
+            background-color: rgba(198, 40, 40, 0.2);
+            border: 1px solid #c62828;
+            color: #ef9a9a;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 44px;
+            padding: 0 12px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #FF9800;
+        }
+
+        .password-wrap {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: #bbb;
+            cursor: pointer;
+            padding: 4px 6px;
+            font-size: 0.9rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            min-height: 44px;
+            border: none;
+            border-radius: 6px;
+            padding: 0 16px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: #FF9800;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #e68900;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        .btn-secondary {
+            background: #2a2a2a;
+            color: #fff;
+            border: 1px solid #444;
+        }
+
+        .btn-secondary:hover {
+            background: #333;
+        }
+
+        .hint-box {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid #2b2b2b;
+            color: #8f8f8f;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 520px) {
+            .login-shell {
+                padding: 22px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="logo">Gestao de Analistas</div>
+            <div class="header-text">Acesso restrito</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="login-shell">
+            <h1 class="login-title">Entrar</h1>
+            <p class="login-subtitle">
+                Informe seu usuario e senha para acessar as opções de gestão.
+            </p>
+
+            <div id="statusBox" class="status-box"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" id="usuario" name="usuario" autocomplete="username" placeholder="Digite seu usuario" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <div class="password-wrap">
+                        <input type="password" id="senha" name="senha" autocomplete="current-password" placeholder="Digite sua senha" required>
+                        <button type="button" class="toggle-password" id="togglePassword">Mostrar</button>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="submit" class="btn-primary" id="btnEntrar">Entrar</button>
+                    <button type="button" class="btn-secondary" id="btnLimpar">Limpar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const usuarioInput = document.getElementById('usuario');
+        const senhaInput = document.getElementById('senha');
+        const togglePasswordBtn = document.getElementById('togglePassword');
+        const btnEntrar = document.getElementById('btnEntrar');
+        const btnLimpar = document.getElementById('btnLimpar');
+        const statusBox = document.getElementById('statusBox');
+
+        function exibirMensagem(tipo, mensagem) {
+            statusBox.className = 'status-box';
+            statusBox.textContent = mensagem;
+
+            if (tipo === 'ok') {
+                statusBox.classList.add('status-ok');
+            } else {
+                statusBox.classList.add('status-error');
+            }
+        }
+
+        function limparMensagem() {
+            statusBox.className = 'status-box';
+            statusBox.textContent = '';
+        }
+
+        function limparFormulario() {
+            usuarioInput.value = '';
+            senhaInput.value = '';
+            usuarioInput.focus();
+            limparMensagem();
+        }
+
+        togglePasswordBtn.addEventListener('click', function () {
+            const exibindoSenha = senhaInput.type === 'text';
+            senhaInput.type = exibindoSenha ? 'password' : 'text';
+            togglePasswordBtn.textContent = exibindoSenha ? 'Mostrar' : 'Ocultar';
+        });
+
+        btnLimpar.addEventListener('click', limparFormulario);
+
+        loginForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            limparMensagem();
+
+            const usuario = usuarioInput.value.trim();
+            const senha = senhaInput.value;
+
+            if (!usuario || !senha) {
+                exibirMensagem('erro', 'Preencha usuario e senha.');
+                return;
+            }
+
+            btnEntrar.disabled = true;
+            btnEntrar.textContent = 'Entrando...';
+
+            try {
+                const resposta = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ usuario, senha })
+                });
+
+                const resultado = await resposta.json().catch(() => ({}));
+
+                if (!resposta.ok) {
+                    exibirMensagem('erro', resultado.mensagem || 'Nao foi possivel realizar o login.');
+                    return;
+                }
+
+                exibirMensagem('ok', resultado.mensagem || 'Login realizado com sucesso. Redirecionando...');
+
+                setTimeout(() => {
+                    window.location.href = resultado.redirect || '/analistas.html';
+                }, 700);
+            } catch (erro) {
+                exibirMensagem('erro', 'A rota /api/login ainda nao foi criada. A pagina ja esta pronta para a proxima etapa.');
+            } finally {
+                btnEntrar.disabled = false;
+                btnEntrar.textContent = 'Entrar';
+            }
+        });
+    </script>
+</body>
+</html>
