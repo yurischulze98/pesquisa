@@ -259,7 +259,7 @@
 
             <div id="statusBox" class="status-box"></div>
 
-            <form id="loginForm">
+            <form id="loginForm" novalidate>
                 <div class="form-group">
                     <label for="usuario">Usuario</label>
                     <input type="text" id="usuario" name="usuario" autocomplete="username" placeholder="Digite seu usuario" required>
@@ -278,9 +278,14 @@
                     <button type="button" class="btn-secondary" id="btnLimpar">Limpar</button>
                 </div>
             </form>
+
+            <div class="hint-box">
+                Use um usuario previamente cadastrado no banco para entrar. A sessao sera mantida no navegador ate o logout ou o vencimento.
+            </div>
         </section>
     </main>
 
+    
     <script>
         const loginForm = document.getElementById('loginForm');
         const usuarioInput = document.getElementById('usuario');
@@ -313,6 +318,26 @@
             limparMensagem();
         }
 
+        async function verificarSessaoAtual() {
+            try {
+                const resposta = await fetch('/api/session', {
+                    method: 'GET',
+                    credentials: 'same-origin'
+                });
+
+                const resultado = await resposta.json().catch(() => ({}));
+
+                if (resposta.ok && resultado.autenticado) {
+                    exibirMensagem('ok', 'Voce ja esta logado. Redirecionando...');
+                    setTimeout(() => {
+                        window.location.href = '/analistas.html';
+                    }, 500);
+                }
+            } catch {
+                // Sem bloqueio: se a rota ainda nao estiver publicada, apenas deixa o login seguir.
+            }
+        }
+
         togglePasswordBtn.addEventListener('click', function () {
             const exibindoSenha = senhaInput.type === 'text';
             senhaInput.type = exibindoSenha ? 'password' : 'text';
@@ -339,6 +364,7 @@
             try {
                 const resposta = await fetch('/api/login', {
                     method: 'POST',
+                    credentials: 'same-origin',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -358,12 +384,15 @@
                     window.location.href = resultado.redirect || '/analistas.html';
                 }, 700);
             } catch (erro) {
-                exibirMensagem('erro', 'A rota /api/login ainda nao foi criada. A pagina ja esta pronta para a proxima etapa.');
+                exibirMensagem('erro', 'Erro ao tentar entrar. Verifique se a rota /api/login ja esta publicada.');
             } finally {
                 btnEntrar.disabled = false;
                 btnEntrar.textContent = 'Entrar';
             }
         });
+
+        verificarSessaoAtual();
     </script>
+
 </body>
 </html>
