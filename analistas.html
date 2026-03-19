@@ -6,11 +6,7 @@
     <title>Analistas - Gestao</title>
     <link rel="icon" href="Y.ico" type="image/x-icon">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-		body {
+        body {
             background-color: #000;
             color: #fff;
             font-family: Arial, sans-serif;
@@ -25,51 +21,13 @@
 
         h1 { color: #FF9800; margin-bottom: 20px; }
 
-        header {
-            width: 100%;
-            background-color: #111;
-            border-bottom: 1px solid #333;
-            margin-bottom: 20px;
-        }
-
-        .header-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #FF9800;
-        }
-
-        .nav {
-            display: flex;
-            gap: 10px;
-        }
-
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 6px 14px;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            font-size: 0.95rem;
-            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-        }
-
-        .nav a:hover {
-            border-color: #FF9800;
-        }
-
-        .nav a.active {
-            background-color: #FF9800;
-            color: #000;
-        }
+        header { width: 100%; background-color: #111; border-bottom: 1px solid #333; margin-bottom: 20px; }
+        .header-inner { max-width: 1100px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #FF9800; }
+        .nav { display: flex; gap: 15px; flex-wrap: wrap; }
+        .nav a { color: #ccc; text-decoration: none; padding: 8px 12px; border-radius: 4px; transition: 0.2s; }
+        .nav a:hover { background-color: #333; color: #fff; }
+        .nav a.active { background-color: #FF9800; color: #000; font-weight: bold; }
 
         .search-container,
         .table-container,
@@ -349,6 +307,77 @@
             font-size: 0.88rem;
         }
 
+        
+        .hidden {
+            display: none !important;
+        }
+
+        .auth-box {
+            width: 100%;
+            max-width: 1100px;
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .auth-title {
+            color: #FF9800;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .auth-text {
+            color: #d0d0d0;
+            font-size: 0.92rem;
+        }
+
+        .auth-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .auth-link,
+        .auth-button {
+            height: 40px;
+            padding: 0 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.92rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #444;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .auth-link:hover,
+        .auth-button:hover {
+            border-color: #FF9800;
+        }
+
+        .readonly-hint {
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            background-color: rgba(255, 152, 0, 0.12);
+            border: 1px solid rgba(255, 152, 0, 0.35);
+            color: #ffd180;
+        }
+
         @media (max-width: 700px) {
             .header-inner {
                 flex-direction: column;
@@ -379,6 +408,21 @@
     </header>
 
     <h1>Planilha de Analistas</h1>
+
+    <div class="auth-box" id="auth-box">
+        <div>
+            <div class="auth-title">Acesso</div>
+            <div class="auth-text" id="auth-text">Verificando sessao...</div>
+        </div>
+        <div class="auth-actions">
+            <a href="login.html" id="btn-ir-login" class="auth-link">Fazer login</a>
+            <button type="button" id="btn-logout" class="auth-button hidden" onclick="fazerLogout()">Sair</button>
+        </div>
+    </div>
+
+    <div id="readonly-hint" class="readonly-hint hidden">
+        Voce esta no modo de consulta. Para adicionar, editar ou remover analistas e torres, faca login com um usuario autorizado.
+    </div>
 
     <div class="search-container">
         <input
@@ -438,11 +482,6 @@
                 <input type="text" id="funcao">
             </div>
 
-            <div class="form-group">
-                <label>Token admin</label>
-                <input type="password" id="admin-token" placeholder="Informe apenas se usar protecao por token">
-            </div>
-
             <button id="btn-main" class="btn-primary" onclick="salvarAnalista()">Adicionar Analista</button>
             <button id="btn-cancelar" class="btn-secondary" onclick="cancelarEdicao()">Cancelar</button>
         </div>
@@ -461,9 +500,12 @@
         </div>
     </div>
 
+    
     <script>
         let analistas = [];
         let torres = [];
+        let usuarioLogado = null;
+        let podeGerenciar = false;
 
         function mostrarStatus(mensagem, tipo = "ok") {
             const status = document.getElementById("status");
@@ -477,19 +519,8 @@
             status.className = "status-box";
         }
 
-        function obterAdminToken() {
-            return document.getElementById("admin-token").value.trim();
-        }
-
         function montarHeadersJson() {
-            const headers = { "Content-Type": "application/json" };
-            const adminToken = obterAdminToken();
-
-            if (adminToken) {
-                headers["x-admin-token"] = adminToken;
-            }
-
-            return headers;
+            return { "Content-Type": "application/json" };
         }
 
         async function parseJsonSegura(resposta) {
@@ -511,6 +542,77 @@
                 .replaceAll("'", "&#39;");
         }
 
+        function atualizarInterfaceAuth() {
+            const authText = document.getElementById("auth-text");
+            const btnLogin = document.getElementById("btn-ir-login");
+            const btnLogout = document.getElementById("btn-logout");
+            const formShell = document.querySelector(".form-shell");
+            const readonlyHint = document.getElementById("readonly-hint");
+
+            if (usuarioLogado && podeGerenciar) {
+                const nomeExibicao = usuarioLogado.nome || usuarioLogado.usuario;
+                authText.textContent = `Logado como ${nomeExibicao} (${usuarioLogado.role || "admin"}).`;
+                btnLogin.classList.add("hidden");
+                btnLogout.classList.remove("hidden");
+                formShell.classList.remove("hidden");
+                readonlyHint.classList.add("hidden");
+            } else {
+                authText.textContent = "Consulta liberada. Entre com um usuario autorizado para gerenciar os registros.";
+                btnLogin.classList.remove("hidden");
+                btnLogout.classList.add("hidden");
+                formShell.classList.add("hidden");
+                readonlyHint.classList.remove("hidden");
+                cancelarEdicao();
+                fecharNovaTorre();
+            }
+
+            renderizarTabela();
+        }
+
+        async function carregarSessao() {
+            try {
+                const resposta = await fetch("/api/session", {
+                    method: "GET",
+                    credentials: "same-origin"
+                });
+
+                const resultado = await parseJsonSegura(resposta);
+
+                if (resposta.ok && resultado.autenticado) {
+                    usuarioLogado = resultado.usuario || null;
+                    podeGerenciar = Boolean(resultado.admin);
+                } else {
+                    usuarioLogado = null;
+                    podeGerenciar = false;
+                }
+            } catch {
+                usuarioLogado = null;
+                podeGerenciar = false;
+            }
+
+            atualizarInterfaceAuth();
+        }
+
+        async function fazerLogout() {
+            try {
+                await fetch("/api/logout", {
+                    method: "POST",
+                    credentials: "same-origin"
+                });
+            } catch {
+                // segue mesmo se falhar
+            }
+
+            usuarioLogado = null;
+            podeGerenciar = false;
+            atualizarInterfaceAuth();
+            mostrarStatus("Sessao encerrada com sucesso.", "ok");
+
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 500);
+        }
+
         function renderizarTabela(lista = analistas) {
             const corpo = document.getElementById("tabela-corpo");
 
@@ -529,26 +631,13 @@
                     <td>${escapeHtml(item.torre)}</td>
                     <td>${escapeHtml(item.funcao)}</td>
                     <td>
-                        <button class="btn-edit" onclick="editarAnalista(${item.id})">Editar</button>
-                        <button class="btn-delete" onclick="removerAnalista(${item.id})">Excluir</button>
+                        ${podeGerenciar
+                            ? `<button class="btn-edit" onclick="editarAnalista(${item.id})">Editar</button>
+                               <button class="btn-delete" onclick="removerAnalista(${item.id})">Excluir</button>`
+                            : `<span style="color:#777;">Somente leitura</span>`}
                     </td>
                 </tr>
             `).join("");
-        }
-
-        function expandirSelectTorre() {
-            const select = document.getElementById("torre");
-            const totalOpcoes = select.options.length;
-            const visiveis = Math.min(Math.max(totalOpcoes, 2), 6);
-
-            select.size = visiveis;
-            select.classList.add("expanded");
-        }
-
-        function recolherSelectTorre() {
-            const select = document.getElementById("torre");
-            select.size = 1;
-            select.classList.remove("expanded");
         }
 
         function fecharDropdownTorre() {
@@ -556,6 +645,7 @@
         }
 
         function toggleDropdownTorre() {
+            if (!podeGerenciar) return;
             document.getElementById("torre-select").classList.toggle("open");
         }
 
@@ -597,7 +687,9 @@
 
         async function carregarTorres(valorSelecionado = "") {
             try {
-                const resposta = await fetch("/api/listar-torres");
+                const resposta = await fetch("/api/listar-torres", {
+                    credentials: "same-origin"
+                });
                 const resultado = await parseJsonSegura(resposta);
 
                 if (!resposta.ok || !resultado.sucesso) {
@@ -614,7 +706,9 @@
 
         async function carregarDados() {
             try {
-                const resposta = await fetch("/api/listar-analistas");
+                const resposta = await fetch("/api/listar-analistas", {
+                    credentials: "same-origin"
+                });
                 const resultado = await parseJsonSegura(resposta);
 
                 if (!resposta.ok || !resultado.sucesso) {
@@ -648,6 +742,8 @@
         }
 
         function toggleNovaTorre() {
+            if (!podeGerenciar) return;
+
             const area = document.getElementById("torre-actions");
             const input = document.getElementById("nova-torre");
             const botao = document.getElementById("btn-toggle-torre");
@@ -673,6 +769,8 @@
         }
 
         function entrarModoEdicao(item) {
+            if (!podeGerenciar) return;
+
             document.getElementById("edit-id").value = item.id;
             document.getElementById("nome").value = item.nome;
             document.getElementById("funcao").value = item.funcao;
@@ -701,6 +799,11 @@
         }
 
         async function editarAnalista(id) {
+            if (!podeGerenciar) {
+                mostrarStatus("Faca login para editar analistas.", "error");
+                return;
+            }
+
             const item = analistas.find(analista => Number(analista.id) === Number(id));
 
             if (!item) {
@@ -712,6 +815,11 @@
         }
 
         async function salvarAnalista() {
+            if (!podeGerenciar) {
+                mostrarStatus("Faca login para adicionar ou editar analistas.", "error");
+                return;
+            }
+
             const id = document.getElementById("edit-id").value.trim();
             const nome = document.getElementById("nome").value.trim();
             const torre = document.getElementById("torre").value.trim();
@@ -729,6 +837,7 @@
             try {
                 const resposta = await fetch(url, {
                     method: "POST",
+                    credentials: "same-origin",
                     headers: montarHeadersJson(),
                     body: JSON.stringify(payload)
                 });
@@ -748,6 +857,11 @@
         }
 
         async function removerAnalista(id) {
+            if (!podeGerenciar) {
+                mostrarStatus("Faca login para remover analistas.", "error");
+                return;
+            }
+
             const confirmado = confirm("Deseja realmente excluir este analista?");
 
             if (!confirmado) {
@@ -757,6 +871,7 @@
             try {
                 const resposta = await fetch("/api/remover-analista", {
                     method: "POST",
+                    credentials: "same-origin",
                     headers: montarHeadersJson(),
                     body: JSON.stringify({ id })
                 });
@@ -780,6 +895,11 @@
         }
 
         async function salvarTorre() {
+            if (!podeGerenciar) {
+                mostrarStatus("Faca login para salvar torres.", "error");
+                return;
+            }
+
             const nome = document.getElementById("nova-torre").value.trim();
 
             if (!nome) {
@@ -790,6 +910,7 @@
             try {
                 const resposta = await fetch("/api/salvar-torre", {
                     method: "POST",
+                    credentials: "same-origin",
                     headers: montarHeadersJson(),
                     body: JSON.stringify({ nome })
                 });
@@ -809,8 +930,9 @@
             }
         }
 
-
         document.getElementById("torre-options").addEventListener("click", function(evento) {
+            if (!podeGerenciar) return;
+
             const opcao = evento.target.closest(".custom-select-option");
 
             if (!opcao) {
@@ -828,11 +950,13 @@
         });
 
         async function inicializarPagina() {
+            await carregarSessao();
             await carregarTorres();
             await carregarDados();
         }
 
         inicializarPagina();
     </script>
+
 </body>
 </html>
