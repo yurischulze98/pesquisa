@@ -6,7 +6,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const url = getTableUrl('?select=id,nome,torre,funcao&order=nome.asc');
+    const url = getTableUrl('?select=id,nome,torre,funcao,clientes_modo,clientes,horario_tipo,horario_outro&order=nome.asc');
     const { response, data } = await supabaseFetch(url, { method: 'GET' });
 
     if (!response.ok) {
