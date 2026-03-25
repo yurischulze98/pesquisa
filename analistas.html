@@ -19,9 +19,8 @@
             padding: 20px;
         }
 
-        h1 {
-            color: #FF9800;
-            margin-bottom: 20px;
+        h1 { 
+            color: #FF9800; margin-bottom: 20px; 
         }
 
         header {
@@ -32,7 +31,7 @@
         }
 
         .header-inner {
-            max-width: 1300px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 10px 20px;
             display: flex;
@@ -49,7 +48,6 @@
         .nav {
             display: flex;
             gap: 10px;
-            flex-wrap: wrap;
         }
 
         .nav a {
@@ -74,10 +72,9 @@
         .search-container,
         .table-container,
         .status-box,
-        .form-shell,
-        .auth-box {
+        .form-shell {
             width: 100%;
-            max-width: 1300px;
+            max-width: 1100px;
             box-sizing: border-box;
         }
 
@@ -103,27 +100,23 @@
         }
 
         table { width: 100%; border-collapse: collapse; text-align: left; }
-        th, td { padding: 12px 15px; border-bottom: 1px solid #333; vertical-align: top; }
-        th { background-color: #222; color: #FF9800; white-space: nowrap; }
+        th, td { padding: 12px 15px; border-bottom: 1px solid #333; }
+        th { background-color: #222; color: #FF9800; }
 
         .btn-edit,
-        .btn-delete,
-        .btn-link-inline {
+        .btn-delete {
             color: white;
             border: none;
             padding: 6px 10px;
             border-radius: 4px;
             cursor: pointer;
             margin-right: 5px;
-            font-weight: bold;
         }
 
         .btn-edit { background-color: #2196F3; }
         .btn-delete { background-color: #f44336; }
         .btn-edit:hover { background-color: #0b7dda; }
         .btn-delete:hover { background-color: #da190b; }
-        .btn-link-inline { background-color: #2d2d2d; color: #FF9800; border: 1px solid #444; }
-        .btn-link-inline:hover { border-color: #FF9800; }
 
         .status-box {
             margin-bottom: 15px;
@@ -178,48 +171,38 @@
             font-size: 0.9rem;
         }
 
-        .edit-badge.active { display: inline-flex; }
+        .edit-badge.active {
+            display: inline-flex;
+        }
 
         .form-container {
-            display: grid;
-            grid-template-columns: repeat(12, minmax(0, 1fr));
+            display: flex;
             gap: 15px;
-            align-items: flex-start;
+            align-items: flex-end;
+            flex-wrap: wrap;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            min-width: 0;
-            gap: 6px;
+            flex: 1;
+            min-width: 200px;
         }
 
-        .span-3 { grid-column: span 3; }
-        .span-4 { grid-column: span 4; }
-        .span-5 { grid-column: span 5; }
-        .span-6 { grid-column: span 6; }
-        .span-12 { grid-column: span 12; }
-
         .form-group label {
+            margin-bottom: 5px;
             color: #aaa;
             font-size: 0.9rem;
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-group input {
             padding: 10px;
             background-color: #222;
             border: 1px solid #444;
             color: #fff;
             border-radius: 4px;
             box-sizing: border-box;
-            min-height: 42px;
-            font: inherit;
-        }
-
-        .form-group textarea {
-            min-height: 90px;
-            resize: vertical;
+            height: 42px;
         }
 
         .custom-select {
@@ -228,7 +211,7 @@
 
         .custom-select-trigger {
             width: 100%;
-            min-height: 42px;
+            height: 42px;
             padding: 10px 38px 10px 10px;
             background-color: #222;
             border: 1px solid #444;
@@ -285,75 +268,16 @@
             color: #fff;
             text-align: left;
             font: inherit;
-            box-sizing: border-box;
         }
 
-        .custom-select-option:last-child { border-bottom: none; }
+        .custom-select-option:last-child {
+            border-bottom: none;
+        }
+
         .custom-select-option:hover,
         .custom-select-option.active {
             background-color: #2b2b2b;
             color: #FF9800;
-        }
-
-        .segmented {
-            display: inline-flex;
-            background-color: #191919;
-            border: 1px solid #3a3a3a;
-            border-radius: 6px;
-            overflow: hidden;
-            width: fit-content;
-            max-width: 100%;
-        }
-
-        .segmented button {
-            border: none;
-            background: transparent;
-            color: #fff;
-            padding: 10px 14px;
-            cursor: pointer;
-            font-weight: bold;
-            border-right: 1px solid #333;
-        }
-
-        .segmented button:last-child { border-right: none; }
-        .segmented button.active {
-            background-color: #FF9800;
-            color: #000;
-        }
-
-        .helper-box {
-            padding: 10px 12px;
-            background-color: #191919;
-            border: 1px solid #2d2d2d;
-            border-radius: 6px;
-            color: #cfcfcf;
-            font-size: 0.9rem;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px 10px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            border: 1px solid #444;
-            background-color: #1d1d1d;
-            color: #fff;
-            white-space: nowrap;
-        }
-
-        .badge-all {
-            border-color: #2e7d32;
-            color: #a5d6a7;
-            background-color: rgba(46, 125, 50, 0.14);
-        }
-
-        .badge-other {
-            border-color: #FF9800;
-            color: #FFCC80;
-            background-color: rgba(255, 152, 0, 0.12);
         }
 
         .torre-toggle-wrap {
@@ -371,8 +295,13 @@
             border-top: 1px solid #2d2d2d;
         }
 
-        .torre-actions.visible { display: flex; }
-        .torre-actions .form-group { min-width: 240px; }
+        .torre-actions.visible {
+            display: flex;
+        }
+
+        .torre-actions .form-group {
+            min-width: 240px;
+        }
 
         .btn-primary,
         .btn-secondary,
@@ -383,7 +312,7 @@
             border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
-            min-height: 42px;
+            height: 42px;
         }
 
         .btn-primary {
@@ -397,7 +326,9 @@
             display: none;
         }
 
-        .btn-secondary.visible { display: inline-block; }
+        .btn-secondary.visible {
+            display: inline-block;
+        }
 
         .btn-inline {
             background-color: #4CAF50;
@@ -416,20 +347,14 @@
             font-size: 0.88rem;
         }
 
-        .hidden { display: none !important; }
-
-        .readonly-hint {
-            width: 100%;
-            max-width: 1300px;
-            margin-bottom: 15px;
-            padding: 12px 16px;
-            border-radius: 8px;
-            background-color: rgba(255, 152, 0, 0.12);
-            border: 1px solid rgba(255, 152, 0, 0.35);
-            color: #ffd699;
+        
+        .hidden {
+            display: none !important;
         }
 
         .auth-box {
+            width: 100%;
+            max-width: 1100px;
             background-color: #111;
             border: 1px solid #333;
             border-radius: 8px;
@@ -462,7 +387,7 @@
 
         .auth-link,
         .auth-button {
-            min-height: 40px;
+            height: 40px;
             padding: 0 16px;
             border-radius: 6px;
             font-weight: bold;
@@ -480,85 +405,6 @@
         .auth-link:hover,
         .auth-button:hover {
             border-color: #FF9800;
-        }
-
-        .popup-backdrop {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.68);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .popup-backdrop.visible {
-            display: flex;
-        }
-
-        .popup-card {
-            width: 100%;
-            max-width: 540px;
-            background-color: #111;
-            border: 1px solid #333;
-            border-radius: 10px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-            overflow: hidden;
-        }
-
-        .popup-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            padding: 16px 18px;
-            border-bottom: 1px solid #2d2d2d;
-        }
-
-        .popup-title {
-            color: #FF9800;
-            font-size: 1.05rem;
-            font-weight: bold;
-        }
-
-        .popup-close {
-            border: 1px solid #444;
-            background-color: #1d1d1d;
-            color: #fff;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .popup-body {
-            padding: 18px;
-            max-height: 60vh;
-            overflow-y: auto;
-            color: #fff;
-        }
-
-        .popup-list {
-            margin: 0;
-            padding-left: 20px;
-            display: grid;
-            gap: 8px;
-        }
-
-        .actions-cell {
-            white-space: nowrap;
-        }
-
-        @media (max-width: 980px) {
-            .span-3,
-            .span-4,
-            .span-5,
-            .span-6 {
-                grid-column: span 12;
-            }
         }
 
         @media (max-width: 700px) {
@@ -604,14 +450,13 @@
     </div>
 
     <div id="readonly-hint" class="readonly-hint hidden">
-        Voce pode consultar os analistas normalmente. Para adicionar, editar ou excluir, faca login com um usuario autorizado.
     </div>
-
+    
     <div class="search-container">
         <input
             type="text"
             id="inputBusca"
-            placeholder="Buscar por nome, torre, funcao, clientes ou horario..."
+            placeholder="Buscar por nome, torre ou funcao..."
             onkeyup="filtrarTabela()"
         >
     </div>
@@ -623,9 +468,7 @@
                     <th>Nome do Analista</th>
                     <th>Torre</th>
                     <th>Funcao</th>
-                    <th>Clientes</th>
-                    <th>Horario</th>
-                    <th style="width: 170px;">Acoes</th>
+                    <th style="width: 150px;">Acoes</th>
                 </tr>
             </thead>
             <tbody id="tabela-corpo"></tbody>
@@ -646,12 +489,12 @@
         <div class="form-container">
             <input type="hidden" id="edit-id" value="">
 
-            <div class="form-group span-4">
+            <div class="form-group">
                 <label>Nome do Analista</label>
                 <input type="text" id="nome">
             </div>
 
-            <div class="form-group span-4">
+            <div class="form-group">
                 <label>Torre (Equipe)</label>
                 <input type="hidden" id="torre">
                 <div class="custom-select" id="torre-select">
@@ -662,42 +505,13 @@
                 </div>
             </div>
 
-            <div class="form-group span-4">
+            <div class="form-group">
                 <label>Funcao (Cargo)</label>
                 <input type="text" id="funcao">
             </div>
 
-            <div class="form-group span-6">
-                <label>Clientes</label>
-                <input type="hidden" id="clientes-modo" value="Todos">
-                <div class="segmented">
-                    <button type="button" id="btn-clientes-todos" class="active" onclick="definirModoClientes('Todos')">Todos</button>
-                    <button type="button" id="btn-clientes-especificos" onclick="definirModoClientes('Especificos')">Clientes especificos</button>
-                </div>
-                <textarea id="clientes" class="hidden" placeholder="Informe um ou mais clientes, separados por virgula ou uma linha por cliente."></textarea>
-                <div class="helper-box" id="clientes-helper">Se este analista atender todos os clientes, mantenha a opcao "Todos".</div>
-            </div>
-
-            <div class="form-group span-3">
-                <label>Horario</label>
-                <input type="hidden" id="horario-tipo" value="Comercial">
-                <div class="custom-select" id="horario-select">
-                    <button type="button" class="custom-select-trigger" id="horario-trigger" onclick="toggleDropdownHorario()">
-                        Comercial
-                    </button>
-                    <div class="custom-select-options" id="horario-options"></div>
-                </div>
-            </div>
-
-            <div class="form-group span-3 hidden" id="horario-outro-group">
-                <label>Detalhe do horario</label>
-                <input type="text" id="horario-outro" placeholder="Ex.: Seg a Sex das 08h as 17h48">
-            </div>
-
-            <div class="form-group span-12" style="display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end;">
-                <button id="btn-main" class="btn-primary" onclick="salvarAnalista()">Adicionar Analista</button>
-                <button id="btn-cancelar" class="btn-secondary" onclick="cancelarEdicao()">Cancelar</button>
-            </div>
+            <button id="btn-main" class="btn-primary" onclick="salvarAnalista()">Adicionar Analista</button>
+            <button id="btn-cancelar" class="btn-secondary" onclick="cancelarEdicao()">Cancelar</button>
         </div>
 
         <div class="torre-toggle-wrap">
@@ -714,22 +528,12 @@
         </div>
     </div>
 
-    <div id="popup-backdrop" class="popup-backdrop" onclick="fecharPopup(event)">
-        <div class="popup-card" onclick="event.stopPropagation()">
-            <div class="popup-header">
-                <div class="popup-title" id="popup-title">Detalhes</div>
-                <button type="button" class="popup-close" onclick="fecharPopup()">X</button>
-            </div>
-            <div class="popup-body" id="popup-body"></div>
-        </div>
-    </div>
-
+    
     <script>
         let analistas = [];
         let torres = [];
         let usuarioLogado = null;
         let podeGerenciar = false;
-        const horariosPadrao = ["Comercial", "12x36", "Outro"];
 
         function mostrarStatus(mensagem, tipo = "ok") {
             const status = document.getElementById("status");
@@ -764,17 +568,6 @@
                 .replaceAll(">", "&gt;")
                 .replaceAll('"', "&quot;")
                 .replaceAll("'", "&#39;");
-        }
-
-        function escapeJsString(valor) {
-            return String(valor ?? "")
-                .replaceAll("\", "\\")
-                .replaceAll("'", "\'")
-                .replaceAll('"', '\"')
-                .replaceAll("
-", "\n")
-                .replaceAll("
-", "\r");
         }
 
         function atualizarInterfaceAuth() {
@@ -835,6 +628,7 @@
                     credentials: "same-origin"
                 });
             } catch {
+                // segue mesmo se falhar
             }
 
             usuarioLogado = null;
@@ -847,40 +641,31 @@
             }, 500);
         }
 
-        function normalizarListaClientes(valor) {
-            return String(valor || "")
-                .split(/[,;
-]+/)
-                .map(item => item.trim())
-                .filter(Boolean);
-        }
+        function renderizarTabela(lista = analistas) {
+            const corpo = document.getElementById("tabela-corpo");
 
-        function obterClientesArray(item) {
-            if (!item) return [];
-            if (String(item.clientes_modo || "Todos") === "Todos") {
-                return [];
+            if (!lista.length) {
+                corpo.innerHTML = `
+                    <tr>
+                        <td colspan="4" style="text-align:center; color:#aaa;">Nenhum analista encontrado.</td>
+                    </tr>
+                `;
+                return;
             }
-            return normalizarListaClientes(item.clientes || "");
-        }
 
-        function definirModoClientes(modo) {
-            const modoNormalizado = modo === "Especificos" ? "Especificos" : "Todos";
-            const inputModo = document.getElementById("clientes-modo");
-            const textarea = document.getElementById("clientes");
-            const btnTodos = document.getElementById("btn-clientes-todos");
-            const btnEspecificos = document.getElementById("btn-clientes-especificos");
-            const helper = document.getElementById("clientes-helper");
-
-            inputModo.value = modoNormalizado;
-            btnTodos.classList.toggle("active", modoNormalizado === "Todos");
-            btnEspecificos.classList.toggle("active", modoNormalizado === "Especificos");
-            textarea.classList.toggle("hidden", modoNormalizado !== "Especificos");
-
-            if (modoNormalizado === "Especificos") {
-                helper.textContent = "Informe um ou mais clientes. Se houver mais de um, separe por virgula ou por linha.";
-            } else {
-                helper.textContent = 'Se este analista atender todos os clientes, mantenha a opcao "Todos".';
-            }
+            corpo.innerHTML = lista.map(item => `
+                <tr>
+                    <td>${escapeHtml(item.nome)}</td>
+                    <td>${escapeHtml(item.torre)}</td>
+                    <td>${escapeHtml(item.funcao)}</td>
+                    <td>
+                        ${podeGerenciar
+                            ? `<button class="btn-edit" onclick="editarAnalista(${item.id})">Editar</button>
+                               <button class="btn-delete" onclick="removerAnalista(${item.id})">Excluir</button>`
+                            : `<span style="color:#777;">Somente leitura</span>`}
+                    </td>
+                </tr>
+            `).join("");
         }
 
         function fecharDropdownTorre() {
@@ -928,51 +713,6 @@
             options.innerHTML = itens.join("");
         }
 
-        function fecharDropdownHorario() {
-            document.getElementById("horario-select").classList.remove("open");
-        }
-
-        function toggleDropdownHorario() {
-            if (!podeGerenciar) return;
-            document.getElementById("horario-select").classList.toggle("open");
-        }
-
-        function atualizarCampoHorarioOutro() {
-            const tipo = document.getElementById("horario-tipo").value || "Comercial";
-            const group = document.getElementById("horario-outro-group");
-            const input = document.getElementById("horario-outro");
-            const exibir = tipo === "Outro";
-            group.classList.toggle("hidden", !exibir);
-            if (!exibir) {
-                input.value = "";
-            }
-        }
-
-        function selecionarHorario(valor) {
-            const valorNormalizado = valor || "Comercial";
-            document.getElementById("horario-tipo").value = valorNormalizado;
-            document.getElementById("horario-trigger").textContent = valorNormalizado;
-            atualizarCampoHorarioOutro();
-            fecharDropdownHorario();
-        }
-
-        function renderizarSelectHorario(valorSelecionado = "Comercial") {
-            const input = document.getElementById("horario-tipo");
-            const options = document.getElementById("horario-options");
-            const trigger = document.getElementById("horario-trigger");
-            const valorAtual = valorSelecionado || input.value || "Comercial";
-
-            input.value = valorAtual;
-            trigger.textContent = valorAtual;
-
-            options.innerHTML = horariosPadrao.map(item => {
-                const ativo = item === valorAtual ? " active" : "";
-                return `<div class="custom-select-option${ativo}" data-value="${escapeHtml(item)}">${escapeHtml(item)}</div>`;
-            }).join("");
-
-            atualizarCampoHorarioOutro();
-        }
-
         async function carregarTorres(valorSelecionado = "") {
             try {
                 const resposta = await fetch("/api/listar-torres", {
@@ -1012,69 +752,6 @@
             }
         }
 
-        function montarClientesCelula(item) {
-            const modo = String(item.clientes_modo || "Todos");
-            if (modo === "Todos") {
-                return '<span class="badge badge-all">Todos</span>';
-            }
-
-            const clientes = obterClientesArray(item);
-            if (!clientes.length) {
-                return '<span style="color:#888;">Nao informado</span>';
-            }
-
-            if (clientes.length === 1) {
-                return escapeHtml(clientes[0]);
-            }
-
-            const clientesJson = escapeJsString(JSON.stringify(clientes));
-            return `<button type="button" class="btn-link-inline" onclick='abrirPopupClientes(${clientesJson})'>Ver clientes (${clientes.length})</button>`;
-        }
-
-        function montarHorarioCelula(item) {
-            const tipo = String(item.horario_tipo || "").trim() || "Comercial";
-            const detalhe = String(item.horario_outro || "").trim();
-
-            if (tipo !== "Outro") {
-                return escapeHtml(tipo);
-            }
-
-            if (!detalhe) {
-                return '<span class="badge badge-other">Outro</span>';
-            }
-
-            return `<button type="button" class="btn-link-inline" onclick="abrirPopupTexto('Horario', '${escapeJsString(detalhe)}')">Outro</button>`;
-        }
-
-        function renderizarTabela(lista = analistas) {
-            const corpo = document.getElementById("tabela-corpo");
-
-            if (!lista.length) {
-                corpo.innerHTML = `
-                    <tr>
-                        <td colspan="6" style="text-align:center; color:#aaa;">Nenhum analista encontrado.</td>
-                    </tr>
-                `;
-                return;
-            }
-
-            corpo.innerHTML = lista.map(item => `
-                <tr>
-                    <td>${escapeHtml(item.nome)}</td>
-                    <td>${escapeHtml(item.torre)}</td>
-                    <td>${escapeHtml(item.funcao)}</td>
-                    <td>${montarClientesCelula(item)}</td>
-                    <td>${montarHorarioCelula(item)}</td>
-                    <td class="actions-cell">
-                        ${podeGerenciar
-                            ? `<button class="btn-edit" onclick="editarAnalista(${item.id})">Editar</button>
-                               <button class="btn-delete" onclick="removerAnalista(${item.id})">Excluir</button>`
-                            : `<span style="color:#777;">Somente leitura</span>`}
-                    </td>
-                </tr>
-            `).join("");
-        }
-
         function filtrarTabela() {
             const termo = document.getElementById("inputBusca").value.toLowerCase().trim();
 
@@ -1083,18 +760,11 @@
                 return;
             }
 
-            const filtrada = analistas.filter(item => {
-                const clientesTexto = String(item.clientes_modo || "Todos") === "Todos"
-                    ? "todos"
-                    : normalizarListaClientes(item.clientes || "").join(" ");
-                const horarioTexto = String(item.horario_tipo || "") + " " + String(item.horario_outro || "");
-
-                return String(item.nome || "").toLowerCase().includes(termo)
-                    || String(item.torre || "").toLowerCase().includes(termo)
-                    || String(item.funcao || "").toLowerCase().includes(termo)
-                    || clientesTexto.toLowerCase().includes(termo)
-                    || horarioTexto.toLowerCase().includes(termo);
-            });
+            const filtrada = analistas.filter(item =>
+                String(item.nome).toLowerCase().includes(termo) ||
+                String(item.torre).toLowerCase().includes(termo) ||
+                String(item.funcao).toLowerCase().includes(termo)
+            );
 
             renderizarTabela(filtrada);
         }
@@ -1126,51 +796,18 @@
             botao.textContent = "+ Adicionar nova torre";
         }
 
-        function abrirPopupClientes(clientes) {
-            const lista = Array.isArray(clientes) ? clientes : [];
-            const html = lista.length
-                ? `<ul class="popup-list">${lista.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
-                : "<div>Nenhum cliente informado.</div>";
-            abrirPopupHtml("Clientes atendidos", html);
-        }
-
-        function abrirPopupTexto(titulo, texto) {
-            abrirPopupHtml(titulo, `<div>${escapeHtml(texto)}</div>`);
-        }
-
-        function abrirPopupHtml(titulo, html) {
-            document.getElementById("popup-title").textContent = titulo || "Detalhes";
-            document.getElementById("popup-body").innerHTML = html || "";
-            document.getElementById("popup-backdrop").classList.add("visible");
-        }
-
-        function fecharPopup(evento) {
-            if (evento && evento.target && evento.target !== document.getElementById("popup-backdrop")) {
-                return;
-            }
-            document.getElementById("popup-backdrop").classList.remove("visible");
-        }
-
         function entrarModoEdicao(item) {
             if (!podeGerenciar) return;
 
             document.getElementById("edit-id").value = item.id;
-            document.getElementById("nome").value = item.nome || "";
-            document.getElementById("funcao").value = item.funcao || "";
+            document.getElementById("nome").value = item.nome;
+            document.getElementById("funcao").value = item.funcao;
             document.getElementById("form-title").textContent = "Editar analista";
             document.getElementById("btn-main").textContent = "Salvar Edicao";
             document.getElementById("btn-cancelar").classList.add("visible");
             document.getElementById("edit-badge").classList.add("active");
-            renderizarSelectTorres(item.torre || "");
-            renderizarSelectHorario(item.horario_tipo || "Comercial");
-
-            const modoClientes = String(item.clientes_modo || "Todos") === "Especificos" ? "Especificos" : "Todos";
-            definirModoClientes(modoClientes);
-            document.getElementById("clientes").value = modoClientes === "Especificos" ? String(item.clientes || "") : "";
-            document.getElementById("horario-outro").value = item.horario_tipo === "Outro" ? String(item.horario_outro || "") : "";
-            atualizarCampoHorarioOutro();
+            renderizarSelectTorres(item.torre);
             fecharDropdownTorre();
-            fecharDropdownHorario();
             document.getElementById("nome").focus();
             limparStatus();
         }
@@ -1180,17 +817,12 @@
             document.getElementById("nome").value = "";
             document.getElementById("funcao").value = "";
             document.getElementById("nova-torre").value = "";
-            document.getElementById("clientes").value = "";
-            document.getElementById("horario-outro").value = "";
             document.getElementById("form-title").textContent = "Adicionar analista";
             document.getElementById("btn-main").textContent = "Adicionar Analista";
             document.getElementById("btn-cancelar").classList.remove("visible");
             document.getElementById("edit-badge").classList.remove("active");
-            definirModoClientes("Todos");
             renderizarSelectTorres();
-            renderizarSelectHorario("Comercial");
             fecharDropdownTorre();
-            fecharDropdownHorario();
             limparStatus();
         }
 
@@ -1220,41 +852,15 @@
             const nome = document.getElementById("nome").value.trim();
             const torre = document.getElementById("torre").value.trim();
             const funcao = document.getElementById("funcao").value.trim();
-            const clientesModo = document.getElementById("clientes-modo").value.trim() || "Todos";
-            const clientesLista = clientesModo === "Especificos"
-                ? normalizarListaClientes(document.getElementById("clientes").value)
-                : [];
-            const horarioTipo = document.getElementById("horario-tipo").value.trim() || "Comercial";
-            const horarioOutro = document.getElementById("horario-outro").value.trim();
 
             if (!nome || !torre || !funcao) {
                 mostrarStatus("Preencha nome, torre e funcao.", "error");
                 return;
             }
 
-            if (clientesModo === "Especificos" && !clientesLista.length) {
-                mostrarStatus("Informe ao menos um cliente especifico ou selecione Todos.", "error");
-                return;
-            }
-
-            if (horarioTipo === "Outro" && !horarioOutro) {
-                mostrarStatus("Informe o detalhe do horario quando selecionar Outro.", "error");
-                return;
-            }
-
-            const payloadBase = {
-                nome,
-                torre,
-                funcao,
-                clientes_modo: clientesModo,
-                clientes: clientesModo === "Todos" ? null : clientesLista.join(", "),
-                horario_tipo: horarioTipo,
-                horario_outro: horarioTipo === "Outro" ? horarioOutro : null
-            };
-
             const emEdicao = Boolean(id);
             const url = emEdicao ? "/api/editar-analista" : "/api/salvar-analista";
-            const payload = emEdicao ? { id: Number(id), ...payloadBase } : payloadBase;
+            const payload = emEdicao ? { id: Number(id), nome, torre, funcao } : { nome, torre, funcao };
 
             try {
                 const resposta = await fetch(url, {
@@ -1285,7 +891,10 @@
             }
 
             const confirmado = confirm("Deseja realmente excluir este analista?");
-            if (!confirmado) return;
+
+            if (!confirmado) {
+                return;
+            }
 
             try {
                 const resposta = await fetch("/api/remover-analista", {
@@ -1351,42 +960,25 @@
 
         document.getElementById("torre-options").addEventListener("click", function(evento) {
             if (!podeGerenciar) return;
+
             const opcao = evento.target.closest(".custom-select-option");
-            if (!opcao) return;
+
+            if (!opcao) {
+                return;
+            }
+
             selecionarTorre(opcao.dataset.value || "");
         });
 
-        document.getElementById("horario-options").addEventListener("click", function(evento) {
-            if (!podeGerenciar) return;
-            const opcao = evento.target.closest(".custom-select-option");
-            if (!opcao) return;
-            selecionarHorario(opcao.dataset.value || "Comercial");
-        });
-
         document.addEventListener("click", function(evento) {
-            const torreContainer = document.getElementById("torre-select");
-            if (torreContainer && !torreContainer.contains(evento.target)) {
+            const container = document.getElementById("torre-select");
+            if (container && !container.contains(evento.target)) {
                 fecharDropdownTorre();
-            }
-
-            const horarioContainer = document.getElementById("horario-select");
-            if (horarioContainer && !horarioContainer.contains(evento.target)) {
-                fecharDropdownHorario();
-            }
-        });
-
-        document.addEventListener("keydown", function(evento) {
-            if (evento.key === "Escape") {
-                fecharPopup();
-                fecharDropdownTorre();
-                fecharDropdownHorario();
             }
         });
 
         async function inicializarPagina() {
             await carregarSessao();
-            renderizarSelectHorario("Comercial");
-            definirModoClientes("Todos");
             await carregarTorres();
             await carregarDados();
         }
