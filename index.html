@@ -186,12 +186,17 @@
             overflow: hidden;
         }
 
-        .footer-spacer {
+        .date-countdown {
             width: var(--iframe-w);
-            height: var(--iframe-h);
+            min-height: var(--iframe-h);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            line-height: 1.25;
         }
 
-        #countdown {
+        #countdown, #countdown0712 {
             font-weight: bold;
             color: #FF9800;
         }
@@ -242,7 +247,9 @@
 
         <div>Tempo restante <span id="countdown">Carregando...</span></div>
 
-        <div class="footer-spacer"></div>
+        <div class="date-countdown">
+            07/12/2026: <span id="countdown0712">Carregando...</span>
+        </div>
     </div>
 </div>
 
@@ -351,18 +358,37 @@
         }
     }
 
+
+    function updateCountdown0712() {
+        const now = new Date();
+        const targetDate = new Date(2026, 11, 7, 0, 0, 0);
+        const countdownElement = document.getElementById('countdown0712');
+        if (!countdownElement) return;
+
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+            countdownElement.innerHTML = '<span style="color: #4CAF50;">Data atingida!</span>';
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        countdownElement.textContent =
+            `${days}d ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         renderRecentList();
         updateCountdown();
+        updateCountdown0712();
         setInterval(updateCountdown, 1000);
+        setInterval(updateCountdown0712, 1000);
     });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
