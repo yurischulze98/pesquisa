@@ -101,20 +101,22 @@ kbd { font: inherit; font-size: .67rem; padding: 2px 5px; border: 1px solid #3a4
 .timer { margin-left: auto; color: var(--accent); font-size: .76rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .section-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 23px; }
-.section-links a { padding: 7px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--muted); font-size: .79rem; text-decoration: none; }
+.section-links a { padding: 7px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--muted); font-size: .9375rem; text-decoration: none; }
 .section-links a:hover { color: var(--accent); border-color: #715538; }
+.directory-section .section-heading h2 { font-size: 1.375rem; }
+.directory-section .section-heading > span { font-size: .9375rem; }
 .directory-section + .directory-section, .name-group + .name-group { margin-top: 26px; }
 .modules-grid, .attendants-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px; }
 .module-card, .attendant-card, .name-card { min-width: 0; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); }
 .module-card, .attendant-card { padding: 14px 16px; }
-.module-card h3, .attendant-card h3 { font-size: .89rem; }
+.module-card h3, .attendant-card h3 { font-size: 1.125rem; }
 .module-card ul { margin: 9px 0 0; padding-left: 17px; }
-.module-card li, .attendant-card p { font-size: .79rem; color: var(--muted); }
+.module-card li, .attendant-card p { font-size: 1rem; color: var(--muted); }
 .module-card li + li, .attendant-card p + p { margin-top: 4px; }
 .module-card li::marker { color: var(--accent); }
 .attendant-card h3 { display: flex; align-items: flex-start; gap: 6px; flex-direction: column; margin-bottom: 9px; }
 .attendant-card strong { color: var(--text); }
-.tag { padding: 2px 6px; border-radius: 5px; font-size: .68rem; font-weight: 650; }
+.attendant-card .tag { padding: 2px 6px; border-radius: 5px; font-size: .875rem; font-weight: 650; }
 .tag-comercial { background: #263649; color: #b9d9fa; }
 .tag-alocado { background: #24382d; color: #b0e3c0; }
 .tag-sob-demanda { background: var(--accent-surface); color: var(--accent); }
