@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ferramentas de consulta para a rotina da Central de Serviços.">
+    <title>Mapa funcional | Central de Serviços</title>
+    <link rel="icon" href="Y.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <div class="app">
+        <aside class="sidebar">
+            <a class="brand" href="index.html">
+                <span class="brand-mark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4zM8 10l3 2-3 2m5 0h3"/></svg></span>
+                <span><strong>Central de Serviços</strong><small>PORTAL DE SUPORTE</small></span>
+            </a>
+            <p class="nav-caption">ÁREA DE TRABALHO</p>
+            <nav class="nav" aria-label="Navegação principal">
+                <a href="index.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4 4"/></svg><span>Chamados</span></a>
+                <a href="funcional.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4m-6 4v-4h12v4"/></svg><span>Mapa funcional</span></a>
+                <a href="nomes.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M8 11h8"/></svg><span>Nomes para Teams</span></a>
+                <a href="informacoes.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>Informações</span></a>
+            </nav>
+            <div class="sidebar-footer"><span class="sidebar-dot"></span> Ferramentas internas</div>
+        </aside>
+        <div class="workspace">
+            <header class="topbar">
+                <div class="breadcrumb"><span>Área de trabalho</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><strong>Mapa funcional</strong></div>
+                <a class="top-link" href="https://support.sevensuite.com.br/" target="_blank" rel="noopener noreferrer">Seven Suite <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 5h6v6m0-6-9 9m8-1v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+            </header>
+            <main id="conteudo" class="page">
+                <section class="intro ">
+                    <div class="intro-content">
+                        <p class="eyebrow"><span></span>DIRETÓRIO INTERNO</p>
+                        <h1>Mapa funcional</h1>
+                        <p class="intro-description">Consulte os responsáveis por módulo e as atribuições de cada atendente.</p>
+                    </div>
+
+                </section>
+                <nav class="section-links" aria-label="Seções do mapa">
+                    <a href="#modulos">Módulos e responsáveis</a>
+                    <a href="#atendentes">Atendentes e atribuições</a>
+                </nav>
+                <section class="directory-section" id="modulos">
+                    <div class="section-heading"><h2>Módulos e responsáveis</h2><span id="modulesCount"></span></div>
+                    <div id="modulesGrid" class="modules-grid"></div>
+                </section>
+                <section class="directory-section" id="atendentes">
+                    <div class="section-heading"><h2>Atendentes e atribuições</h2><span id="attendantsCount"></span></div>
+                    <div id="attendantsList" class="attendants-list"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script>
+        const modules = [
+            { title: 'INV', people: ['Adroaldo Cesaro', 'Thiago Vaz'] },
+            { title: 'iProc', people: ['Adroaldo Cesaro', 'Livia Bernardes'] },
+            { title: 'PO', people: ['Adroaldo Cesaro', 'Livia Bernardes'] },
+            { title: 'RI', people: ['Adroaldo Cesaro', 'Livia Bernardes'] },
+            { title: 'FA', people: ['Anderson Roberto Pereira', 'Flavia Parra', 'Katiucia Santos Martins'] },
+            { title: 'Desenvolvedor / Desenvolvedora', people: ['Andreia Vieira', 'Caue Gastardi', 'Claudio Santos', 'Cleomar Roeper', 'Fabio Silva', 'Giovani Bachtold', 'Helder Hedler', 'Jean Rodrigo Evangelista Silva', 'Joao Barbosa', 'Renato Nass Junior', 'Vinicius Ferreira'] },
+            { title: 'AR', people: ['Flavia Costa', 'Helder Hedler', 'Hemerson', 'Renato Nass Junior', 'Roberto Kohntopp'] },
+            { title: 'Billing', people: ['Flavia Costa', 'Roberto Kohntopp'] },
+            { title: 'GL', people: ['Flavia Parra', 'Katiucia Santos Martins'] },
+            { title: 'AP', people: ['Flavia Parra', 'Katiucia Santos Martins'] },
+            { title: 'EPM', people: ['Bruno Almeida', 'Flavia Parra'] },
+            { title: 'PAC', people: ['Dalmir Bonh', 'Mario Sergio Sabag'] },
+            { title: 'Mastersaf / TaxOne / DFE', people: ['Claudio Santos', 'Graziela Reis Melo', 'Vinicius Ferreira'] },
+            { title: 'OM', people: ['Helder Hedler', 'Hemerson', 'Renato Nass Junior', 'Roberto Kohntopp'] },
+            { title: 'iExpense', people: ['Katiucia Santos Martins'] },
+            { title: 'WMS', people: ['Thiago Vaz'] }
+        ];
+
+        const attendants = [
+            {
+                name: 'Adroaldo Cesaro',
+                modules: 'INV; iProc, PO, RI',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Anderson Roberto Pereira',
+                modules: 'FA',
+                clients: 'Especificamente projeto da Peccin',
+                schedule: 'Sob demanda'
+            },
+            {
+                name: 'Andreia Vieira',
+                modules: 'Desenvolvedora',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Bruno Almeida',
+                modules: 'EPM',
+                clients: 'Especificamente projeto da Renner',
+                schedule: 'Sob demanda'
+            },
+            {
+                name: 'Caue Gastardi',
+                modules: 'Desenvolvedor',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Claudio Santos',
+                modules: 'Desenvolvedor Mastersaf (Tax One e DFE)',
+                clients: 'Peccin',
+                schedule: 'Sob demanda'
+            },
+            {
+                name: 'Cleomar Roeper',
+                modules: 'Desenvolvedor',
+                clients: 'GRPCOM',
+                schedule: 'Sob demanda'
+            },
+            {
+                name: 'Dalmir Bonh',
+                modules: 'PAC',
+                clients: 'Mundial',
+                schedule: 'Sob Demanda'
+            },
+            {
+                name: 'Fabio Silva',
+                modules: 'Desenvolvedor',
+                clients: 'Especificamente Elo',
+                schedule: 'Alocacao full time'
+            },
+            {
+                name: 'Flavia Costa',
+                modules: 'AR, Billing',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Flavia Parra',
+                modules: 'GL, FA, AP, EPM',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Giovani Bachtold',
+                modules: 'Desenvolvedor',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Graziela Reis Melo',
+                modules: 'Mastersaf/TaxOne',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Helder Hedler',
+                modules: 'Desenvolvedor + OM/AR',
+                clients: 'Todos',
+                schedule: 'Esta alocado para Procergs'
+            },
+            {
+                name: 'Hemerson',
+                modules: 'OM/AR',
+                clients: 'Todos',
+                schedule: 'Sob Demanda'
+            },
+            {
+                name: 'Jean Rodrigo Evangelista Silva',
+                modules: 'Desenvolvedor',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Joao Barbosa',
+                modules: 'Desenvolvedor',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Katiucia Santos Martins',
+                modules: 'GL, FA, AP, iExpense',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Livia Bernardes',
+                modules: 'iProc, PO, RI',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Mario Sergio Sabag',
+                modules: 'PAC',
+                clients: 'Peccin',
+                schedule: 'Sob Demanda'
+            },
+            {
+                name: 'Renato Nass Junior',
+                modules: 'Desenvolvedor + OM/AR',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Roberto Kohntopp',
+                modules: 'AR, Billing e OM',
+                clients: 'Todos',
+                schedule: 'Comercial'
+            },
+            {
+                name: 'Thiago Vaz',
+                modules: 'WMS, INV',
+                clients: 'Portobello, Mundial',
+                schedule: 'Sob demanda'
+            },
+            {
+                name: 'Vinicius Ferreira',
+                modules: 'Desenvolvedor Mastersaf',
+                clients: 'Todos',
+                schedule: 'Sob demanda'
+            }
+        ];
+
+        function getScheduleTagClass(schedule) {
+            const value = schedule.toLowerCase();
+
+            if (value.includes('comercial')) {
+                return 'tag-comercial';
+            }
+
+            if (value.includes('alocado') || value.includes('alocacao')) {
+                return 'tag-alocado';
+            }
+
+            return 'tag-sob-demanda';
+        }
+
+        function renderModules() {
+            const container = document.getElementById('modulesGrid');
+
+            modules.forEach(module => {
+                const card = document.createElement('div');
+                card.className = 'module-card';
+
+                const title = document.createElement('h3');
+                title.textContent = module.title;
+
+                const list = document.createElement('ul');
+                module.people.forEach(person => {
+                    const item = document.createElement('li');
+                    item.textContent = person;
+                    list.appendChild(item);
+                });
+
+                card.appendChild(title);
+                card.appendChild(list);
+                container.appendChild(card);
+            });
+        }
+
+        function renderAttendants() {
+            const container = document.getElementById('attendantsList');
+
+            attendants.forEach(attendant => {
+                const card = document.createElement('div');
+                card.className = 'attendant-card';
+
+                const title = document.createElement('h3');
+                title.textContent = `${attendant.name}`;
+
+                const scheduleTag = document.createElement('span');
+                scheduleTag.className = `tag ${getScheduleTagClass(attendant.schedule)}`;
+                scheduleTag.textContent = attendant.schedule;
+                title.appendChild(scheduleTag);
+
+                const modulesText = document.createElement('p');
+                modulesText.innerHTML = `<strong>Módulos:</strong> ${attendant.modules}`;
+
+                const clientsText = document.createElement('p');
+                clientsText.innerHTML = `<strong>Clientes:</strong> ${attendant.clients}`;
+
+                const scheduleText = document.createElement('p');
+                scheduleText.innerHTML = `<strong>Horário:</strong> ${attendant.schedule}`;
+
+                card.appendChild(title);
+                card.appendChild(modulesText);
+                card.appendChild(clientsText);
+                card.appendChild(scheduleText);
+                container.appendChild(card);
+            });
+        }
+
+        renderModules();
+        renderAttendants();
+        document.getElementById('modulesCount').textContent = `${modules.length} módulos`;
+        document.getElementById('attendantsCount').textContent = `${attendants.length} atendentes`;
+    </script>
+</body>
+</html>

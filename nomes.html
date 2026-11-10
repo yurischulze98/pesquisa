@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ferramentas de consulta para a rotina da Central de Serviços.">
+    <title>Nomes para Teams | Central de Serviços</title>
+    <link rel="icon" href="Y.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <div class="app">
+        <aside class="sidebar">
+            <a class="brand" href="index.html">
+                <span class="brand-mark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4zM8 10l3 2-3 2m5 0h3"/></svg></span>
+                <span><strong>Central de Serviços</strong><small>PORTAL DE SUPORTE</small></span>
+            </a>
+            <p class="nav-caption">ÁREA DE TRABALHO</p>
+            <nav class="nav" aria-label="Navegação principal">
+                <a href="index.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4 4"/></svg><span>Chamados</span></a>
+                <a href="funcional.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4m-6 4v-4h12v4"/></svg><span>Mapa funcional</span></a>
+                <a href="nomes.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M8 11h8"/></svg><span>Nomes para Teams</span></a>
+                <a href="informacoes.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>Informações</span></a>
+            </nav>
+            <div class="sidebar-footer"><span class="sidebar-dot"></span> Ferramentas internas</div>
+        </aside>
+        <div class="workspace">
+            <header class="topbar">
+                <div class="breadcrumb"><span>Área de trabalho</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><strong>Nomes para Teams</strong></div>
+                <a class="top-link" href="https://support.sevensuite.com.br/" target="_blank" rel="noopener noreferrer">Seven Suite <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 5h6v6m0-6-9 9m8-1v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+            </header>
+            <main id="conteudo" class="page">
+                <section class="intro ">
+                    <div class="intro-content">
+                        <p class="eyebrow"><span></span>BIBLIOTECA INTERNA</p>
+                        <h1>Nomes para Teams</h1>
+                        <p class="intro-description">Encontre sugestões por equipe e copie o nome que quiser usar no Teams.</p>
+                    </div>
+
+                </section>
+                <section class="panel filters" aria-label="Filtros de sugestões">
+                    <div><label for="nameSearch">Buscar nome</label><input id="nameSearch" type="search" placeholder="Ex. analista, backup, queries"></div>
+                    <div><label for="nameGroup">Equipe ou categoria</label><select id="nameGroup"><option value="">Todas as categorias</option><option value="grupo-0">DBA</option><option value="grupo-1">Estagiários</option><option value="grupo-2">Redes</option><option value="grupo-3">Microsoft</option><option value="grupo-4">Linux</option><option value="grupo-5">Backup</option><option value="grupo-6">Geral</option><option value="grupo-7">Requisições</option></select></div>
+                </section>
+                <p id="nameResults" class="results-count" role="status"></p>
+                <p id="copyStatus" class="visually-hidden" role="status"></p>
+                <div id="namesDirectory">
+                    <section class="name-group" id="grupo-0">
+                        <div class="section-heading"><h2>DBA</h2><span>29 sugestões</span></div>
+                        <div class="names-list">
+<div class="name-card">
+                <span class="name-text">Guardião Supremo das Queries Desastrosas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mentor Sênior de “Não Roda Esse UPDATE Sem WHERE”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro Chefe da Recuperação do Que o Estagiário Fez</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Reverter DROP Acidental</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Indexes que Ninguém Usa</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Internacional de Deadlocks Involuntários</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Instrutor Oficial de Backups que Nunca Foram Feitos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Arquiteto das Tabelas Bagunçadas Pelo Estagiário</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre Jedi do “Não Mexe Nessa Produção!”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista Sênior de Queries que Rodam Até Amanhã</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor de Estagiário com Acesso Demais</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de Otimização de SELECTs Impossíveis</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gestor de Locks Existenciais</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em “Rodei Sem Querer na Prod…”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Treinador Pokémon de Estagiários com Poder de DROP</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Cientista de Performance Degradada Misteriosamente</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Chefe de “Por Que Essa Tabela Tá com 8 Bilhões de Linhas?”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Auditor Oficial de Índices Criados por Desespero</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista Líder do “Tenta Não Travar o Banco Hoje”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Técnico de Tabelas com Nome Errado</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Professor de “Explique o Plano, Não Apenas Rode”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor Global de Ambientes que o Estagiário Quebrou</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gestor de Replicações que Sumiram Sem Motivo</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Diretor de Consultas que Parecem Feitas pelo Inimigo</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista Certificado em “Rollback É Vida”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista Sênior de Erros ORA-* Que Só Ele Entende</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Curador de Scripts Perdidos no Desktop do Estagiário</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre dos Backups de 12 Horas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder Espiritual da Query Otimizada</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+                        </div>
+                    </section>
+                    <section class="name-group" id="grupo-1">
+                        <div class="section-heading"><h2>Estagiários</h2><span>28 sugestões</span></div>
+                        <div class="names-list">
+<div class="name-card">
+                <span class="name-text">Instrutor Internacional de Estagiários Perdidos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mentor Sênior em “Calma, Respira e Faz de Novo”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Dúvidas Infinitas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Traduzir o Óbvio</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gerente de Expectativas do Estagiário</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor de Desastres Controlados</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista Líder de “Deixa Que Eu Te Mostro de Novo”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre dos Tutoriais Não Lidos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro da Paciência Inesgotável</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coach Corporativo de Ctrl+Z</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Técnico em “Não Era Pra Clicar Ali”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mentor Emocional de Primeiros Deploys</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gerente de Incidentes Causados por Boa Intenção</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Treinador Pokémon de Estagiários</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Arquiteto de Conhecimento Básico Repetido</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista Sênior de “Não, Isso Não Vai Pro Ar”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Reverter o Que o Estagiário Fez</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder Global de Repasse do Mesmo Procedimento</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Facilitador Master de Onboardings Sem Fim</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gestor de Tarefas que Viraram Aulas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Professor de “Copia Aqui e Cola Ali”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Cientista das Perguntas que Não Têm Fim</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Head de Explicar a Mesma Coisa Diferente</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor de Crise do Estagiário em Pânico</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Auditor de Testes Não Feitos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre Jedi do “Relaxa, Acontece”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Pequenos Caos Corporativos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de Suporte Psicológico ao Estagiário</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+                        </div>
+                    </section>
+                    <section class="name-group" id="grupo-2">
+                        <div class="section-heading"><h2>Redes</h2><span>18 sugestões</span></div>
+                        <div class="names-list">
+<div class="name-card">
+                <span class="name-text">Mestre das Conexões Que Nunca Acontecem</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de "Por Que a Rede Cai Todo Dia?"</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder Supremo de Cabos Que Não Têm Fim</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Técnico de Problemas Invisíveis</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de IPs que Não Respondem</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de “Vou Resetar o Switch”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em VPNs Que Só Funciona no Seu PC</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Arquiteto de “Vamos Trocar o Roteador de Novo?”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Chefe das Requisições de Abertura de Porta de Firewall</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Professor das Reconfigurações Que Não Deveriam Ser Necessárias</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de Links Que “Teoricamente” Estão Ok</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor de Latência Que Não Para de Aumentar</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor de “Agora Sim, A Rede Funciona!”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mago das Configurações de Roteador Que Ninguém Entende</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gestor das Cores dos Cabos de Rede (É Tudo Padrão?)</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder de Alinhamento de Rede com 1Gbps Mas Com 3 Clientes Conectados</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Expert em “Resetou o Switch e Funcionou”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de Conexões que Dão Tudo Errado em Reuniões de TI</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+                        </div>
+                    </section>
+                    <section class="name-group" id="grupo-3">
+                        <div class="section-heading"><h2>Microsoft</h2><span>16 sugestões</span></div>
+                        <div class="names-list">
+<div class="name-card">
+                <span class="name-text">Líder de Windows Que Nunca Atualiza na Hora Certa</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de “Eu Só Uso Windows Para Escrever Relatório”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor de Atendimentos Que Sempre Começam Com “Reinicia a Máquina”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de “Atualização do Sistema em 2 Horas”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em “Desinstalar/Reinstalar” Que Resolve Tudo</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor de Erros de Microsoft Office Que Ninguém Sabe Explicar</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Licenças Que Nunca Estão Ativas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gestor de Windows Server Que Precisa de 3 Reboots para Funcionar</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Chefe da Confusão do Active Directory</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Arquiteto de "Foi o Exchange Que Deu Pau de Novo?"</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de Senhas Perdidas no Office 365</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de Scripts de PowerShell Que Ninguém Lê</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor de Como Fazer o Excel Funcionar de Novo</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre das Políticas de Grupo Que Nunca Aplicam Certo</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder do Controle de Versões que Todo Mundo Ignora</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Fazer o Windows Parar de Pedir para Reiniciar</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+                        </div>
+                    </section>
+                    <section class="name-group" id="grupo-4">
+                        <div class="section-heading"><h2>Linux</h2><span>16 sugestões</span></div>
+                        <div class="names-list">
+<div class="name-card">
+                <span class="name-text">Guru dos Comandos Que Ninguém Entende</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de “chmod 777 Resolve Tudo”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder das Ferramentas de Log Que Ninguém Lê</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Arquiteto das Instalações Manuais que Ninguém Sabe Reproduzir</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em ‘Não Sei Por Que Funciona, Só Funciona’</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor de Bash Scripts Que Quase Nunca Rodam na Primeira Tentativa</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder de "Eu Não Mexo Em Sistema que Não É Ubuntu"</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista das Configurações do Kernel Que Só Ele Lê</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor dos Logs Infinitos no /var/log</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre da Linha de Comando de “Dá Para Fazer Direto no Terminal”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Guru do Docker e Kubernetes Que Ninguém Tem Tempo de Aprender</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Arquiteto de Servidores Que Nunca São Reiniciados</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor em Root e Senha do Super Usuário (É Sempre No Sudo!)</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em “Errado, Mas Está Funcional”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder da Batalha Contra os Drivers Não Suportados</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista das Atualizações Que Quebram o Sistema a Cada Release</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+                        </div>
+                    </section>
+                    <section class="name-group" id="grupo-5">
+                        <div class="section-heading"><h2>Backup</h2><span>16 sugestões</span></div>
+                        <div class="names-list">
+<div class="name-card">
+                <span class="name-text">Diretor de Backups Que Nunca Foram Feitos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de “Mas Cadê o Backup de Ontem?”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre dos Logs de Backup Que Só Ele Entende</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Técnico de Restauração Que Nunca Funciona na Hora Certa</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder de Backups Incompletos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor de “A TAPE Está Full, Mas Está Tudo Bem”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Backup No Banco Que Não Resolve Nada</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de Arquivos Que Nunca Foram Realmente Recuperados</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Confundir Full e Incremental</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Chefe das Replicações Que Nunca Acontecem no Tempo Certo</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor de “Reverta Isso Para Ontem”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de “Parece Que Deu Tudo Certo, Mas Não Deu”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder do Backup das 3 da Manhã Que Falhou com Sucesso</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Arquiteto de Soluções de Backup Que Ninguém Verifica</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre dos Scripts de Backup Que Estão Sempre Quebrados</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Backups Que Só Funcionam no Fim de Semana</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+                        </div>
+                    </section>
+                    <section class="name-group" id="grupo-6">
+                        <div class="section-heading"><h2>Geral</h2><span>61 sugestões</span></div>
+                        <div class="names-list">
+<div class="name-card">
+                <span class="name-text">Chefe da Solução Imediata</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre dos Deploys Impossíveis</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de Tudo e Mais um Pouco</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Lorde das Requisições</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Barão dos Chamados Abertos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">O Cara da TI (mesmo não sendo)</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Professor Pardal do Setor</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Rei do “Já Tentei Reiniciar?”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Sênior de Problemas Alheios</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de Gambiarra Certificada</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Diretor de Problemas Não Resolvidos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">CEO das Desculpas Técnicas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro Oficial da Gambiarra Premium</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Pleno em “Funciona na Minha Máquina”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Chamar Alguém Que Sabe</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Rei do “Já Tentou Desligar e Ligar?”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor de Bugs Espontâneos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre Jedi da Não Prioridade</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Demandas Inexistentes</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Padrinho das Tasks Que Ninguém Quer</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Lorde Supremo da Pancada no Servidor</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista Sênior de Cliques Aleatórios</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gestor de Expectativas Quebradas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Operador Avançado de Ctrl+C Ctrl+V</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Auditor Oficial de Chamados Mal Abertos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Papai Noel das Promessas Pro Fim do Dia</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de Soluções Temporárias Eternas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Campeão Mundial de “Deixa Comigo”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Doutor em Evitar Reuniões Desnecessárias</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Investigador de Bugs Sobrenaturais</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Treinador Pokémon de Estagiários</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor de Tabajara Deploys</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Chefe Global da T.I. Emocional</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Resolver o Que Ninguém Pediu</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro Estratégico de Expectativas Irreais</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gerente de Prioridades Invisíveis</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor de Alto Nível em “Depois a Gente Vê”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Projetos que Nasceram Mortos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de Risco Emocional das Sprints</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Diretor Executivo de Soluções Improváveis</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor de Alinhamentos Eternos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gestor de Entregas Quase Prontas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder Técnico de Ajustes Mágicos</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Curador Oficial de Reuniões Desnecessárias</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Destravar Processos Travados</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Chefe das Melhorias que Nunca Chegam</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Master em “Passar a Bola”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Estrategista de Problemas que Surgem do Nada</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Designer de Fluxos que Só Ele Entende</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de Otimizações Inesperadas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Arquiteto de Soluções que Parecem Simples</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de Produtividade Baseada em Café</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Demandas com Deadline Ontem</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Diretor de Relatórios que Ninguém Lê</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Curador de Evidências que Comprovam Nada</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista de Alto Impacto em Big Nada</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor Internacional de Microdecisões</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Técnico de Ambiguidades Corporativas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Head de Conversas que Podiam Ser um E-mail</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador Global de Processos Sem Dono</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de Middleware Entre Caos e Ordem</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+                        </div>
+                    </section>
+                    <section class="name-group" id="grupo-7">
+                        <div class="section-heading"><h2>Requisições</h2><span>27 sugestões</span></div>
+                        <div class="names-list">
+<div class="name-card">
+                <span class="name-text">Coordenador Supremo das Requisições que Somem no Sistema</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Pedidos que Nunca São Aprovados</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Internacional de “Já Pedi pro Financeiro”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista Sênior de Follow-up Infinito</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre Jedi da Requisição Negada</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder Técnico do “Falta Só Um Aprovar”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor de Pedidos Urgentes Desde Ontem</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro de Requisições que Pararam no Workflow</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Diretor Executivo de “O Fornecedor Não Mandou Ainda”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Curador das Cotações Jamais Respondidas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Arquiteto de Compras que Estão ‘Em Análise’ Desde 2020</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Auditor Oficial de Pedidos com Descrição Confusa</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista Sênior de Notas Fiscais Inexistentes</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gerente de Expectativas Sobre Prazos Impossíveis</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em “Isso Aqui é Serviço ou Produto?”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Supervisor Global das Três Cotações que Ninguém Envia</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Chefe das Requisições de Último Minuto</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Consultor Master de “O Sistema Caiu Bem na Minha Aprovação”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Embaixador de Compras com Orçamento Zerado</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Coordenador de Solicitações com Código Errado</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Analista de Demanda que Nunca Para</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Gestor de “O RH Ainda Não Liberou Isso”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Doutor em Requisições Retrabalhadas</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Mestre do “Precisa Abrir Outra porque Essa Foi Fechada Errada”</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Especialista em Cadastrar Fornecedor que Não Existe</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Engenheiro dos Processos Quebrados do Workflow</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+<div class="name-card">
+                <span class="name-text">Líder Espiritual de Aprovações Perdidas no E-mail</span>
+                <button class="copy-btn" type="button">Copiar</button>
+            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="nomes.js"></script>
+</body>
+</html>
