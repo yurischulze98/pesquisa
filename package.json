@@ -1,0 +1,9 @@
+{
+  "name": "central-de-servicos",
+  "private": true,
+  "type": "module",
+  "description": "Portal Central de Serviços: consultas e ferramentas de IA para a rotina de suporte.",
+  "engines": {
+    "node": ">=20"
+  }
+}
