@@ -144,6 +144,8 @@ h1, h2, h3, p { margin: 0; }
 /* Página */
 .page { max-width: 1440px; margin: 0 auto; padding: 16px; }
 /* Na página de chamados, a agenda fica no fim da tela */
+/* Páginas de coluna única ficam estreitas e centralizadas, com o texto de abertura alinhado ao conteúdo */
+.page:has(.tool-narrow), .page:has(.guide) { max-width: 932px; }
 .page:has(> .agenda) { display: flex; flex-direction: column; min-height: calc(100dvh - 41px); }
 .page:has(> .agenda) > .agenda { margin-top: auto; padding-top: 24px; }
 .intro { margin-bottom: 14px; }
@@ -260,7 +262,7 @@ kbd { padding: 1px 6px; border: 1px solid var(--line-strong); border-radius: 3px
 .copy-btn.copied { background: var(--green-bar); color: var(--on-strong); }
 
 /* Informações */
-.guide { max-width: 860px; }
+.guide { max-width: none; }
 .guide + .guide { margin-top: 12px; }
 .steps { counter-reset: guide-step; margin: 0; padding: 0; list-style: none; }
 .steps li { position: relative; counter-increment: guide-step; min-height: 46px; padding: 12px 0 12px 40px; border-top: 1px solid var(--line); font-size: .875rem; }
@@ -272,8 +274,13 @@ kbd { padding: 1px 6px; border: 1px solid var(--line-strong); border-radius: 3px
 .steps a .icon { width: 13px; height: 13px; }
 
 /* Ferramentas de IA */
-.tool-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; align-items: start; }
-.tool-narrow { max-width: 900px; }
+.tool-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; align-items: stretch; }
+.tool-grid > .panel { display: flex; flex-direction: column; }
+.tool-grid > .panel > .result-empty, .tool-grid > .panel > .result-stack { flex: 1; }
+.tool-grid > .result-stack { grid-template-rows: auto 1fr; }
+.tool-grid > .result-stack > .result-block { display: flex; flex-direction: column; }
+.tool-grid > .result-stack > .result-block > textarea { flex: 1; }
+.tool-narrow { max-width: none; }
 .tool-narrow > * + * { margin-top: 12px; }
 .field { margin-bottom: 18px; }
 .field-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 6px; }
