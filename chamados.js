@@ -1,5 +1,5 @@
 const STORAGE_KEY = 'recentTicketIDs';
-const MAX_HISTORY = 10;
+const MAX_HISTORY = 20;
 const BASE_URL = 'https://support.sevensuite.com.br/TicketDossier/';
 const SUFFIX = '/OpenBySequentialId';
 const form = document.getElementById('ticketForm');
