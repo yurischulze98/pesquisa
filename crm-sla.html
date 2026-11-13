@@ -6,6 +6,9 @@
     <meta name="description" content="Gera atualização formal de CRM e justificativa de SLA a partir da anotação do analista.">
     <title>CRM e SLA | Central de Serviços</title>
     <link rel="icon" href="Y.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -49,8 +52,10 @@
                             <div><h2 id="crm-form">Informação do chamado</h2><p>Texto bruto do analista ou registrado no chamado.</p></div>
                         </div>
                         <form id="crmForm" novalidate>
-                            <div class="field-row"><label for="textoChamado">Texto</label><span class="counter" id="crmCount">0 caracteres</span></div>
-                            <textarea id="textoChamado" class="textarea-tall" spellcheck="true" placeholder="Ex.: Validado com o cliente que o backup voltou a rodar após ajuste da retenção. Aguardando duas execuções completas para confirmar..."></textarea>
+                            <div class="float-field">
+                                <div class="field-row"><label for="textoChamado">Texto</label><span class="counter" id="crmCount">0 caracteres</span></div>
+                                <textarea id="textoChamado" class="textarea-tall" spellcheck="true" placeholder="Ex.: Validado com o cliente que o backup voltou a rodar após ajuste da retenção. Aguardando duas execuções completas para confirmar..."></textarea>
+                            </div>
                             <p class="notice notice-error" id="crmError" role="alert" hidden></p>
                             <div class="form-actions">
                                 <span class="keyboard-hint"><kbd>Ctrl</kbd> <kbd>Enter</kbd></span>

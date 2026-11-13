@@ -6,6 +6,9 @@
     <meta name="description" content="Análise operacional de dossiê: classificação, CRM, continuidade, SLA e cobrança.">
     <title>Análise de dossiê | Central de Serviços</title>
     <link rel="icon" href="Y.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -48,11 +51,11 @@
                             <span class="tile-icon tile-icon-accent"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6m-6 4h4"/></svg></span>
                             <div><h2 id="dossie-form">Entrada</h2><p>Os prints ficam anexados e marcados no texto.</p></div>
                         </div>
-                        <div class="field">
+                        <div class="field float-field">
                             <label for="chamadoId">ID do chamado <span class="optional">(opcional)</span></label>
                             <input id="chamadoId" type="text" placeholder="Ex.: INC-123456" autocomplete="off">
                         </div>
-                        <div class="field">
+                        <div class="field float-field">
                             <div class="field-row"><label for="historico">Descrição ou apontamento</label><span class="counter" id="dossieCount">0 caracteres · 0/8 anexos</span></div>
                             <div class="drop-target" id="dropTarget">
                                 <textarea id="historico" class="textarea-tall mono" spellcheck="false" placeholder="Cole aqui o histórico do Seven Suite com Ctrl+V. As imagens são anexadas separadamente e marcadas no texto como [Imagem #1], mantendo a ordem original quando ela estiver disponível na cópia."></textarea>
@@ -67,7 +70,7 @@
                                 <div class="attachments-grid" id="attachmentsGrid"></div>
                             </section>
                         </div>
-                        <div class="field">
+                        <div class="field float-field">
                             <label for="complemento">Informação complementar <span class="optional">(opcional)</span></label>
                             <textarea id="complemento" rows="3" placeholder="Ex.: cobrei o analista; falei com o gestor; existe chamado filho..."></textarea>
                         </div>

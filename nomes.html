@@ -6,6 +6,9 @@
     <meta name="description" content="Ferramentas de consulta para a rotina da Central de Serviços.">
     <title>Nomes para Teams | Central de Serviços</title>
     <link rel="icon" href="Y.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -44,8 +47,8 @@
 
                 </section>
                 <section class="panel filters" aria-label="Filtros de sugestões">
-                    <div><label for="nameSearch">Buscar nome</label><input id="nameSearch" type="search" placeholder="Ex. analista, backup, queries"></div>
-                    <div><label for="nameGroup">Equipe ou categoria</label><select id="nameGroup"><option value="">Todas as categorias</option><option value="grupo-0">DBA</option><option value="grupo-1">Estagiários</option><option value="grupo-2">Redes</option><option value="grupo-3">Microsoft</option><option value="grupo-4">Linux</option><option value="grupo-5">Backup</option><option value="grupo-6">Geral</option><option value="grupo-7">Requisições</option></select></div>
+                    <div class="float-field"><label for="nameSearch">Buscar nome</label><input id="nameSearch" type="search" placeholder="Ex. analista, backup, queries"></div>
+                    <div class="float-field"><label for="nameGroup">Equipe ou categoria</label><select id="nameGroup"><option value="">Todas as categorias</option><option value="grupo-0">DBA</option><option value="grupo-1">Estagiários</option><option value="grupo-2">Redes</option><option value="grupo-3">Microsoft</option><option value="grupo-4">Linux</option><option value="grupo-5">Backup</option><option value="grupo-6">Geral</option><option value="grupo-7">Requisições</option></select></div>
                 </section>
                 <p id="nameResults" class="results-count" role="status"></p>
                 <p id="copyStatus" class="visually-hidden" role="status"></p>

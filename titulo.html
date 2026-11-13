@@ -6,6 +6,9 @@
     <meta name="description" content="Gera o título do chamado externo Renner-ServiceNow a partir da descrição.">
     <title>Título de chamado | Central de Serviços</title>
     <link rel="icon" href="Y.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -49,8 +52,10 @@
                             <div><h2 id="titulo-form">Descrição do chamado</h2><p>O número RITM é identificado e incluído automaticamente.</p></div>
                         </div>
                         <form id="titleForm" novalidate>
-                            <div class="field-row"><label for="description">Descrição</label><span class="counter" id="charCount">0/4000</span></div>
-                            <textarea id="description" maxlength="4000" rows="8" placeholder="Ex.: Implantação de nova rede FORTINET na loja. Atividade em conjunto com a validação do link CLARO que será movido para o novo rack..."></textarea>
+                            <div class="float-field">
+                                <div class="field-row"><label for="description">Descrição</label><span class="counter" id="charCount">0/4000</span></div>
+                                <textarea id="description" maxlength="4000" rows="8" placeholder="Ex.: Implantação de nova rede FORTINET na loja. Atividade em conjunto com a validação do link CLARO que será movido para o novo rack..."></textarea>
+                            </div>
                             <p class="notice notice-error" id="titleError" role="alert" hidden></p>
                             <div class="form-actions">
                                 <span class="keyboard-hint"><kbd>Ctrl</kbd> <kbd>Enter</kbd></span>
