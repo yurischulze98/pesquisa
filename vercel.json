@@ -9,6 +9,9 @@
     },
     "api/analisar-dossie.js": {
       "maxDuration": 120
+    },
+    "api/acessos.js": {
+      "maxDuration": 15
     }
   },
   "headers": [
