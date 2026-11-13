@@ -205,6 +205,10 @@ kbd { padding: 1px 6px; border: 1px solid var(--line-strong); border-bottom-widt
 
 /* Informações */
 .guide { max-width: 720px; }
+.guide + .guide { margin-top: 16px; }
+.button-secondary { margin-left: auto; min-height: 34px; padding: 6px 12px; border-color: var(--line-strong); background: var(--bg-subtle); color: var(--text-soft); font-size: .8125rem; white-space: nowrap; }
+.button-secondary:hover { border-color: var(--muted); color: var(--text); }
+.button-secondary.copied { border-color: transparent; background: var(--success-soft); color: var(--success); }
 .steps { counter-reset: guide-step; margin: 0; padding: 0; list-style: none; }
 .steps li { position: relative; counter-increment: guide-step; min-height: 56px; padding: 15px 0 15px 44px; border-top: 1px solid var(--line); font-size: .9375rem; }
 .steps li strong { font-weight: 500; }
