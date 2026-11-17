@@ -29,7 +29,7 @@
   "redirects": [
     {
       "source": "/acessos",
-      "destination": "https://script.google.com/macros/s/COLE_O_ID_DA_IMPLANTACAO/exec",
+      "destination": "https://script.google.com/macros/s/AKfycbxeyjFokreQODPUjkLckLUQXFjo5qT5wYZrqFUyEvgXY-oQM6op4JjjGEspmUcop22Q/exec",
       "permanent": false
     }
   ]
