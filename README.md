@@ -7,6 +7,7 @@ Portal com as consultas e ferramentas do dia a dia da Central de Serviços. As p
 | Página | Arquivo | O que faz |
 | --- | --- | --- |
 | Chamados | `index.html` | Abre chamados do Seven Suite pelo ID e guarda o histórico recente |
+| Painel de chamados | `painel-chamados.html` | Indicadores, gráficos e detalhamento por analista, classificação, status etc. a partir da planilha importada (dados ficam só no navegador) |
 | Mapa funcional | `funcional.html` | Responsáveis por módulo e atribuições dos atendentes |
 | Nomes para Teams | `nomes.html` | Sugestões de nomes para copiar |
 | Informações | `informacoes.html` | Guias com botão para copiar a mensagem pronta para o Teams |
